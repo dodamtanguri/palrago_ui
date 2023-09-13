@@ -17,9 +17,11 @@ class PalragoUI extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         primaryColor: PlgColor.primary_ff1b9dd9,
-        appBarTheme: const AppBarTheme(),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: PlgColor.white_ffffffff,
+        ),
       ),
-      home: Py1002Screen(),
+      home: const Py1002Screen(),
     );
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:palrago_ui/feature/py1002/py_1002_screen.dart';
+import 'package:palrago_ui/ui/styles/colors.dart';
 
 void main() {
   runApp(const PalragoUI());
@@ -14,10 +16,10 @@ class PalragoUI extends StatelessWidget {
       title: 'Palrago-UI',
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
-        primaryColor: const Color(0xff1b9dd9),
+        primaryColor: PlgColor.primary_ff1b9dd9,
         appBarTheme: const AppBarTheme(),
       ),
+      home: Py1002Screen(),
     );
   }
 }
-

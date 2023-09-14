@@ -61,6 +61,7 @@ class _Py1002ScreenState extends State<Py1002Screen> {
                       borderSide: BorderSide(color: PlgColor.black1_1a282828),
                     ),
                     suffixIcon: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         OutlinedButton(
                           style: OutlinedButton.styleFrom(
@@ -78,32 +79,12 @@ class _Py1002ScreenState extends State<Py1002Screen> {
                             padding: EdgeInsets.all(8.0),
                             child: Text(
                               '잔액조회',
-                              style: PlgStyles.caption2Black_ff282828_12,
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ),
-                          OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: PlgSizes.wh1, vertical: PlgSizes.wh1),
-                            fixedSize: const Size(PlgSizes.wh70, PlgSizes.wh1),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(999),
-                            ),
-                            side: const BorderSide(
-                                width: 1, color: PlgColor.primary_ff1b9dd9),
-                          ),
-                          onPressed: () {},
-                          child: const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text(
-                              '잔액조회',
                               style: PlgStyles.caption2Primary_ff1b9dd9_12,
                               textAlign: TextAlign.center,
                             ),
                           ),
                         ),
+                        
                       ],
                     ),
                   ),

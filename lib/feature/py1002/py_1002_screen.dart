@@ -44,46 +44,13 @@ class _Py1002ScreenState extends State<Py1002Screen> {
                   style: PlgStyles.captionGrey_ff999999_12,
                 ),
                 PlgMargins.v40,
-                TextFormField(
-                  keyboardType: TextInputType.phone,
-                  decoration: const InputDecoration(
-                    hintText: "핸드폰 번호",
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: PlgColor.black1_1a282828),
-                    ),
-                  ),
+                 CheckBalancePointWidget(
+                  buttonText: '잔액조회',
+                  onPasswordChange: (password) => print('password : $password'),
+                  onPhoneNumberChange: (phoneNumber) => print('핸드폰 번호 : $phoneNumber'),
+              
                 ),
                 PlgMargins.v20,
-
-                TextField(
-                  obscureText: true,
-                  textAlignVertical: TextAlignVertical.center,
-                  decoration: InputDecoration(
-                    hintText: "잔액조회",
-                    border: const UnderlineInputBorder(
-                      borderSide: BorderSide(color: PlgColor.black1_1a282828),
-                    ),
-                    suffixIcon: Container(
-                      margin: const EdgeInsets.all(8),
-                      child: OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                          minimumSize: const Size(PlgSizes.wh70, PlgSizes.wh20),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(999),
-                          ),
-                          side: const BorderSide(
-                              width: 1, color: PlgColor.primary_ff1b9dd9),
-                        ),
-                        child: const Text(
-                          "잔액조회",
-                          style: PlgStyles.caption2Primary_ff1b9dd9_12,
-                        ),
-                        onPressed: () {},
-                      ),
-                    ),
-                  ),
-                ),
-                PlgMargins.v16,
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -273,6 +240,80 @@ class _Py1002ScreenState extends State<Py1002Screen> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class CheckBalancePointWidget extends HookWidget {
+  const CheckBalancePointWidget({
+    required this.buttonText,
+    required this.onPhoneNumberChange,
+    required this.onPasswordChange,
+    super.key,
+  });
+
+  final String buttonText;
+  final void Function(String phoneNumber) onPhoneNumberChange;
+  final void Function(String password) onPasswordChange;
+
+  @override
+  Widget build(BuildContext context) {
+    final phoneController = useTextEditingController();
+    final passwordController = useTextEditingController();
+    final phoneUpdate = useValueListenable(phoneController);
+    final passwordUpdate = useValueListenable(passwordController);
+
+    useEffect(() {
+      print(' 핸드폰번호 : $phoneUpdate.phoneNumber');
+      print(' 비밀번호 : $passwordUpdate.password');
+      onPhoneNumberChange(phoneUpdate.text);
+      onPasswordChange(passwordUpdate.text);
+      return null;
+    }, [phoneUpdate.text, passwordUpdate.text]);
+
+    return Column(
+      children: [
+        TextFormField(
+          controller: phoneController,
+          keyboardType: TextInputType.phone,
+          decoration: const InputDecoration(
+            hintText: "핸드폰 번호",
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: PlgColor.black1_1a282828),
+            ),
+          ),
+        ),
+        PlgMargins.v20,
+        TextField(
+          controller: passwordController,
+          obscureText: true,
+          textAlignVertical: TextAlignVertical.center,
+          decoration: InputDecoration(
+            hintText: "비밀번호",
+            border: const UnderlineInputBorder(
+              borderSide: BorderSide(color: PlgColor.black1_1a282828),
+            ),
+            suffixIcon: Container(
+              margin: const EdgeInsets.all(8),
+              child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  minimumSize: const Size(PlgSizes.wh70, PlgSizes.wh20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(999),
+                  ),
+                  side: const BorderSide(
+                      width: 1, color: PlgColor.primary_ff1b9dd9),
+                ),
+                child: const Text(
+                  "잔액조회",
+                  style: PlgStyles.caption2Primary_ff1b9dd9_12,
+                ),
+                onPressed: () {},
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

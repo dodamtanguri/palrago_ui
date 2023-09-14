@@ -60,26 +60,51 @@ class _Py1002ScreenState extends State<Py1002Screen> {
                     focusedBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(color: PlgColor.black1_1a282828),
                     ),
-                    suffixIcon: OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: PlgSizes.wh1, vertical: PlgSizes.wh1),
-                        //maximumSize: const Size(PlgSizes.wh70, PlgSizes.wh32),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(999),
+                    suffixIcon: Row(
+                      children: [
+                        OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: PlgSizes.wh1, vertical: PlgSizes.wh1),
+                             fixedSize: const Size(PlgSizes.wh70, PlgSizes.wh20),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(999),
+                            ),
+                            side: const BorderSide(
+                                width: 1, color: PlgColor.primary_ff1b9dd9),
+                          ),
+                          onPressed: () {},
+                          child: const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              '잔액조회',
+                              style: PlgStyles.caption2Black_ff282828_12,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
                         ),
-                        side: const BorderSide(
-                            width: 1, color: PlgColor.primary_ff1b9dd9),
-                      ),
-                      onPressed: () {},
-                      child: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          '잔액조회',
-                          style: PlgStyles.caption2Primary_ff1b9dd9_12,
-                          textAlign: TextAlign.center,
+                          OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: PlgSizes.wh1, vertical: PlgSizes.wh1),
+                            fixedSize: const Size(PlgSizes.wh70, PlgSizes.wh1),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(999),
+                            ),
+                            side: const BorderSide(
+                                width: 1, color: PlgColor.primary_ff1b9dd9),
+                          ),
+                          onPressed: () {},
+                          child: const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              '잔액조회',
+                              style: PlgStyles.caption2Primary_ff1b9dd9_12,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
                 ),
@@ -232,7 +257,6 @@ class _Py1002ScreenState extends State<Py1002Screen> {
                   height: 132,
                   padding: const EdgeInsets.only(
                       top: PlgSizes.wh32,
-                  
                       left: PlgSizes.wh20,
                       right: PlgSizes.wh32),
                   decoration: BoxDecoration(
@@ -294,7 +318,7 @@ class UsePointWidget extends StatelessWidget {
           style: OutlinedButton.styleFrom(
             padding: const EdgeInsets.symmetric(
                 horizontal: PlgSizes.wh1, vertical: PlgSizes.wh1),
-            //maximumSize: const Size(PlgSizes.wh70, PlgSizes.wh32),
+            fixedSize: const Size(PlgSizes.wh70, PlgSizes.wh32),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(4),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:palrago_ui/ui/styles/colors.dart';
 import 'package:palrago_ui/ui/styles/margins.dart';
 import 'package:palrago_ui/ui/styles/sizes.dart';
@@ -66,8 +67,9 @@ class _Py1002ScreenState extends State<Py1002Screen> {
                         OutlinedButton(
                           style: OutlinedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: PlgSizes.wh1, vertical: PlgSizes.wh1),
-                             fixedSize: const Size(PlgSizes.wh70, PlgSizes.wh20),
+                                horizontal: PlgSizes.wh1,
+                                vertical: PlgSizes.wh1),
+                            fixedSize: const Size(PlgSizes.wh70, PlgSizes.wh20),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(999),
                             ),
@@ -84,7 +86,6 @@ class _Py1002ScreenState extends State<Py1002Screen> {
                             ),
                           ),
                         ),
-                        
                       ],
                     ),
                   ),
@@ -170,39 +171,22 @@ class _Py1002ScreenState extends State<Py1002Screen> {
                   ),
                 ),
                 PlgMargins.v20,
-                const Row(
-                  children: [
-                    Text(
-                      '사용할 캐시',
-                      style: PlgStyles.subtitle3Grey_ff999999_13,
-                      textAlign: TextAlign.left,
-                    ),
-                    Text(
-                      '(사용가능 : 100,000P)',
-                      style: PlgStyles.subtitle3Grey_ff999999_13,
-                      textAlign: TextAlign.left,
-                    ),
-                  ],
+
+                 UsePointWidget(
+                  label: '사용할 캐시',
+                  pointLabel: 100000,
+                  minPoint: 350,
+                  buttonText: '전액사용',
+                  onTextChanged: (text) => print('마일리지 : $text'),
                 ),
-                PlgMargins.v11,
-                const UsePointWidget(),
                 PlgMargins.v20,
-                const Row(
-                  children: [
-                    Text(
-                      '사용할 마일리지',
-                      style: PlgStyles.subtitle3Grey_ff999999_13,
-                      textAlign: TextAlign.left,
-                    ),
-                    Text(
-                      '(사용가능 : 100,000P)',
-                      style: PlgStyles.subtitle3Grey_ff999999_13,
-                      textAlign: TextAlign.left,
-                    ),
-                  ],
+                 UsePointWidget(
+                  label: '사용할 마일리지',
+                  pointLabel: 100000,
+                  minPoint: 400,
+                  buttonText: '전액사용',
+                  onTextChanged: (text) => print('캐시 : $text'),
                 ),
-                PlgMargins.v11,
-                const UsePointWidget(),
                 PlgMargins.v32,
                 //교환하기 버튼
                 FractionallySizedBox(
@@ -272,48 +256,88 @@ class _Py1002ScreenState extends State<Py1002Screen> {
   }
 }
 
-class UsePointWidget extends StatelessWidget {
+class UsePointWidget extends HookWidget {
   const UsePointWidget({
     super.key,
+    required this.label,
+    required this.pointLabel,
+    required this.buttonText,
+    required this.minPoint,
+    required this.onTextChanged,
   });
+  final String label;
+  final int pointLabel;
+  final int minPoint;
+  final String buttonText;
+  final void Function(String text) onTextChanged;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    final controller = useTextEditingController();
+    final update = useValueListenable(controller);
+
+    useEffect(() {
+      print(update.text);
+      onTextChanged(update.text);
+      return null;
+    }, [update.text]);
+
+    return Column(
       children: [
-        Expanded(
-          child: TextField(
-            decoration: InputDecoration(
-                hintText: '최소 100P',
-                hintStyle: PlgStyles.body3Grey_ff999999_13,
-                hintTextDirection: TextDirection.rtl,
-                border: OutlineInputBorder(
+        Row(
+          children: [
+            Text(
+              label,
+              style: PlgStyles.subtitle3Grey_ff999999_13,
+              textAlign: TextAlign.left,
+            ),
+            Text(
+              '(사용가능 : ${pointLabel}P)',
+              style: PlgStyles.subtitle3Grey_ff999999_13,
+              textAlign: TextAlign.left,
+            ),
+          ],
+        ),
+        PlgMargins.v11,
+        Row(
+          children: [
+            Expanded(
+              child: TextField(
+                controller: controller,
+                decoration: InputDecoration(
+                    hintText: '최소 ${minPoint}P',
+                    hintStyle: PlgStyles.body3Grey_ff999999_13,
+                    hintTextDirection: TextDirection.rtl,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    fillColor: PlgColor.black5_0d282828,
+                    filled: true),
+              ),
+            ),
+            PlgMargins.h7,
+            OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: PlgSizes.wh1, vertical: PlgSizes.wh1),
+                fixedSize: const Size(PlgSizes.wh70, PlgSizes.wh32),
+                shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(4),
                 ),
-                fillColor: PlgColor.black5_0d282828,
-                filled: true),
-          ),
-        ),
-        PlgMargins.h7,
-        OutlinedButton(
-          style: OutlinedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(
-                horizontal: PlgSizes.wh1, vertical: PlgSizes.wh1),
-            fixedSize: const Size(PlgSizes.wh70, PlgSizes.wh32),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(4),
+                side:
+                    const BorderSide(width: 1, color: PlgColor.black1_1a282828),
+              ),
+              onPressed: () {},
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  '전액사용',
+                  style: PlgStyles.captionBlack2_ff282828_12,
+                  textAlign: TextAlign.center,
+                ),
+              ),
             ),
-            side: const BorderSide(width: 1, color: PlgColor.black1_1a282828),
-          ),
-          onPressed: () {},
-          child: const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              '전액사용',
-              style: PlgStyles.captionBlack2_ff282828_12,
-              textAlign: TextAlign.center,
-            ),
-          ),
+          ],
         ),
       ],
     );

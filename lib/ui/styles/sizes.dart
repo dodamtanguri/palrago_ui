@@ -41,6 +41,7 @@ class PlgSizes {
   static const wh56 = 56.0 * _whOffset;
   static const wh60 = 60.0 * _whOffset;
   static const wh64 = 64.0 * _whOffset;
+  static const wh70 = 70.0 * _whOffset;
   static const wh72 = 72.0 * _whOffset;
   static const wh80 = 80.0 * _whOffset;
   static const wh96 = 96.0 * _whOffset;

@@ -61,18 +61,23 @@ class _Py1002ScreenState extends State<Py1002Screen> {
                   ),
                   suffixIcon: OutlinedButton(
                     style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: PlgSizes.wh1, vertical: PlgSizes.wh1),
+                      //maximumSize: const Size(PlgSizes.wh70, PlgSizes.wh32),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(999),
                       ),
                       side: const BorderSide(
                           width: 1, color: PlgColor.primary_ff1b9dd9),
-                      fixedSize: const Size(PlgSizes.wh72, PlgSizes.wh32),
                     ),
                     onPressed: () {},
-                    child: const Text(
-                      '잔액조회',
-                      style: PlgStyles.caption2Primary_ff1b9dd9_12,
-                      textAlign: TextAlign.center,
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        '잔액조회',
+                        style: PlgStyles.caption2Primary_ff1b9dd9_12,
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                 ),
@@ -82,36 +87,40 @@ class _Py1002ScreenState extends State<Py1002Screen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.center, // 중앙 정렬
                     children: [
-                      Align(
-                        alignment: Alignment.topCenter,
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: PlgSizes.wh10),
+                        alignment: Alignment.center,
                         child: Image.asset(
                           'assets/images/ic_result.png',
                         ),
                       ),
-                      const SizedBox(width: 10), // 이미지와 텍스트 사이의 간격을 줍니다.
+                      //PlgMargins.h10,
                       const Expanded(
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               '캐시잔액',
                               style: PlgStyles.captionRightBlack_ff282828_12,
                             ),
+                            PlgMargins.v10,
                             Text(
                               '마일리지 잔액',
                               style: PlgStyles.captionRightBlack_ff282828_12,
                             ),
+                            PlgMargins.v10,
                             Text(
                               '교환 금액',
                               style: PlgStyles.captionRightBlack_ff282828_12,
                             ),
+                            PlgMargins.v10,
                           ],
                         ),
                       ),
-                      const SizedBox(width: 10), // 텍스트와 금액 사이의 간격을 줍니다.
+                      PlgMargins.v10, // 텍스트와 금액 사이의 간격을 줍니다.
                       const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.end,
@@ -120,10 +129,12 @@ class _Py1002ScreenState extends State<Py1002Screen> {
                             '14,355 p',
                             style: PlgStyles.captionBlack2_ff282828_12,
                           ),
+                          PlgMargins.v10,
                           Text(
                             '14,355 p',
                             style: PlgStyles.captionBlack2_ff282828_12,
                           ),
+                          PlgMargins.v10,
                           Text(
                             '14,355 p',
                             style: PlgStyles.captionBlack2_ff282828_12,
@@ -141,12 +152,103 @@ class _Py1002ScreenState extends State<Py1002Screen> {
                 decoration: const BoxDecoration(
                   color: PlgColor.fill_surface85_d9f8f8f8,
                 ),
-                child: const Text("close button 들어가는 곳"),
               ),
+              PlgMargins.v20,
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  '캐시/마일리지 사용',
+                  style: PlgStyles.subtitle1Black_ff282828_16,
+                  textAlign: TextAlign.left,
+                ),
+              ),
+              PlgMargins.v20,
+              const Row(
+                children: [
+                  Text(
+                    '사용할 캐시',
+                    style: PlgStyles.subtitle3Grey_ff999999_13,
+                    textAlign: TextAlign.left,
+                  ),
+                  Text(
+                    '(사용가능 : 100,000P)',
+                    style: PlgStyles.subtitle3Grey_ff999999_13,
+                    textAlign: TextAlign.left,
+                  ),
+                ],
+              ),
+              PlgMargins.v11,
+              const UsePointWidget(),
+              PlgMargins.v20,
+              const Row(
+                children: [
+                  Text(
+                    '사용할 마일리지',
+                    style: PlgStyles.subtitle3Grey_ff999999_13,
+                    textAlign: TextAlign.left,
+                  ),
+                  Text(
+                    '(사용가능 : 100,000P)',
+                    style: PlgStyles.subtitle3Grey_ff999999_13,
+                    textAlign: TextAlign.left,
+                  ),
+                ],
+              ),
+              const UsePointWidget(),
+              PlgMargins.v32,
+              
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class UsePointWidget extends StatelessWidget {
+  const UsePointWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: TextField(
+            decoration: InputDecoration(
+                hintText: '최소 100P',
+                hintStyle: PlgStyles.body3Grey_ff999999_13,
+                hintTextDirection: TextDirection.rtl,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                fillColor: PlgColor.black5_0d282828,
+                filled: true),
+          ),
+        ),
+        PlgMargins.h7,
+        OutlinedButton(
+          style: OutlinedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(
+                horizontal: PlgSizes.wh1, vertical: PlgSizes.wh1),
+            //maximumSize: const Size(PlgSizes.wh70, PlgSizes.wh32),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4),
+            ),
+            side: const BorderSide(width: 1, color: PlgColor.black1_1a282828),
+          ),
+          onPressed: () {},
+          child: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              '전액사용',
+              style: PlgStyles.captionBlack2_ff282828_12,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

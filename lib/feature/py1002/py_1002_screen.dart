@@ -23,13 +23,17 @@ class _Py1002ScreenState extends State<Py1002Screen> {
             child: Column(
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: PlgSizes.wh56,
-                  decoration: const BoxDecoration(
-                    color: PlgColor.white_ffffffff,
-                  ),
-                  child: const Text("close button 들어가는 곳"),
-                ),
+                    alignment: Alignment.centerRight,
+                    width: MediaQuery.of(context).size.width,
+                    height: PlgSizes.wh56,
+                    decoration: const BoxDecoration(
+                      color: PlgColor.white_ffffffff,
+                    ),
+                    child: const Icon(
+                      Icons.close,
+                      size: PlgSizes.wh14,
+                      color: PlgColor.grey_ff999999,
+                    )),
                 Wrap(
                   //Image 팔라고
                   children: [
@@ -44,75 +48,14 @@ class _Py1002ScreenState extends State<Py1002Screen> {
                   style: PlgStyles.captionGrey_ff999999_12,
                 ),
                 PlgMargins.v40,
-                 CheckBalancePointWidget(
+                CheckBalancePointWidget(
                   buttonText: '잔액조회',
                   onPasswordChange: (password) => print('password : $password'),
-                  onPhoneNumberChange: (phoneNumber) => print('핸드폰 번호 : $phoneNumber'),
-              
+                  onPhoneNumberChange: (phoneNumber) =>
+                      print('핸드폰 번호 : $phoneNumber'),
                 ),
                 PlgMargins.v20,
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: PlgSizes.wh10),
-                          alignment: Alignment.center,
-                          child: Image.asset(
-                            'assets/images/ic_result.png',
-                          ),
-                        ),
-                        //PlgMargins.h10,
-                        const Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '캐시잔액',
-                                style: PlgStyles.captionRightBlack_ff282828_12,
-                              ),
-                              PlgMargins.v10,
-                              Text(
-                                '마일리지 잔액',
-                                style: PlgStyles.captionRightBlack_ff282828_12,
-                              ),
-                              PlgMargins.v10,
-                              Text(
-                                '교환 금액',
-                                style: PlgStyles.captionRightBlack_ff282828_12,
-                              ),
-                              PlgMargins.v10,
-                            ],
-                          ),
-                        ),
-                        PlgMargins.v10,
-                        const Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(
-                              '14,355 p',
-                              style: PlgStyles.captionBlack2_ff282828_12,
-                            ),
-                            PlgMargins.v10,
-                            Text(
-                              '14,355 p',
-                              style: PlgStyles.captionBlack2_ff282828_12,
-                            ),
-                            PlgMargins.v10,
-                            Text(
-                              '14,355 p',
-                              style: PlgStyles.captionBlack2_ff282828_12,
-                            ),
-                          ],
-                        ),
-                      ],
-                    )
-                  ],
-                ),
+                const BalanceWideget(),
                 PlgMargins.v20,
                 Container(
                   width: MediaQuery.of(context).size.width,
@@ -207,39 +150,74 @@ class _Py1002ScreenState extends State<Py1002Screen> {
                     ],
                   ),
                 ),
-                TextField(
-                  decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.search),
-                    hintText: "Search",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                      borderSide: const BorderSide(
-                        color: Colors.black,
-                        width: 1,
-                        style: BorderStyle.solid,
-                      ),
-                    ),
-                    suffixIcon: Container(
-                      margin: const EdgeInsets.all(8),
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: const Size(100, 50),
-                          backgroundColor: Colors.red,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                        ),
-                        child: const Text("Search"),
-                        onPressed: () {},
-                      ),
-                    ),
-                  ),
-                ),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class BalanceWideget extends StatelessWidget {
+  const BalanceWideget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        SizedBox(
+          height: PlgSizes.wh70,
+          width: PlgSizes.wh20,
+          child: Image.asset(
+            'assets/images/ic_result.png',
+            alignment: Alignment.topCenter,
+          ),
+        ),
+        const Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              //이미지 + 캐시잔액
+              Text(
+                '캐시잔액',
+                style: PlgStyles.captionRightBlack_ff282828_12,
+              ),
+              PlgMargins.v10,
+              Text(
+                '마일리지 잔액',
+                style: PlgStyles.captionRightBlack_ff282828_12,
+              ),
+              PlgMargins.v10,
+              Text(
+                '교환 금액',
+                style: PlgStyles.captionRightBlack_ff282828_12,
+              ),
+            ],
+          ),
+        ),
+        PlgMargins.v10,
+        const Column(
+          children: [
+            Text(
+              '14,355 p',
+              style: PlgStyles.captionBlack2_ff282828_12,
+            ),
+            PlgMargins.v10,
+            Text(
+              '14,355 p',
+              style: PlgStyles.captionBlack2_ff282828_12,
+            ),
+            PlgMargins.v10,
+            Text(
+              '14,355 p',
+              style: PlgStyles.captionBlack2_ff282828_12,
+            ),
+          ],
+        )
+      ],
     );
   }
 }
@@ -364,17 +342,21 @@ class UsePointWidget extends HookWidget {
         Row(
           children: [
             Expanded(
-              child: TextField(
-                controller: controller,
-                decoration: InputDecoration(
-                    hintText: '최소 ${minPoint}P',
-                    hintStyle: PlgStyles.body3Grey_ff999999_13,
-                    hintTextDirection: TextDirection.rtl,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    fillColor: PlgColor.black5_0d282828,
-                    filled: true),
+              child: SizedBox(
+                height: PlgSizes.wh36,
+                child: TextField(
+                  textAlignVertical: TextAlignVertical.center,
+                  controller: controller,
+                  decoration: InputDecoration(
+                      hintText: '최소 ${minPoint}P',
+                      hintStyle: PlgStyles.body3Grey_ff999999_13,
+                      hintTextDirection: TextDirection.rtl,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(4),
+                          borderSide: BorderSide.none),
+                      fillColor: PlgColor.black5_0d282828,
+                      filled: true),
+                ),
               ),
             ),
             PlgMargins.h7,

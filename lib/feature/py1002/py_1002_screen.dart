@@ -183,17 +183,17 @@ class BalanceWideget extends StatelessWidget {
               //이미지 + 캐시잔액
               Text(
                 '캐시잔액',
-                style: PlgStyles.captionRightBlack_ff282828_12,
+                style: PlgStyles.caption2Black_ff282828_12,
               ),
               PlgMargins.v10,
               Text(
                 '마일리지 잔액',
-                style: PlgStyles.captionRightBlack_ff282828_12,
+                style: PlgStyles.caption2Black_ff282828_12,
               ),
               PlgMargins.v10,
               Text(
                 '교환 금액',
-                style: PlgStyles.captionRightBlack_ff282828_12,
+                style: PlgStyles.caption2Black_ff282828_12,
               ),
             ],
           ),
@@ -212,7 +212,7 @@ class BalanceWideget extends StatelessWidget {
             ),
             PlgMargins.v10,
             Text(
-              '14,355 p',
+              '1,000원',
               style: PlgStyles.captionBlack2_ff282828_12,
             ),
           ],

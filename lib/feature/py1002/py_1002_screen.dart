@@ -1,3 +1,6 @@
+import 'dart:ffi';
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:palrago_ui/ui/styles/colors.dart';
@@ -5,16 +8,22 @@ import 'package:palrago_ui/ui/styles/margins.dart';
 import 'package:palrago_ui/ui/styles/sizes.dart';
 import 'package:palrago_ui/ui/styles/styles.dart';
 
-class Py1002Screen extends StatefulWidget {
-  const Py1002Screen({super.key});
+class Parameter {
+  final int cash;
+  final int milage;
+  final int exchange;
 
-  @override
-  State<Py1002Screen> createState() => _Py1002ScreenState();
+  Parameter({required this.cash, required this.milage, required this.exchange});
 }
 
-class _Py1002ScreenState extends State<Py1002Screen> {
+class Py1002ScreenWidget extends HookWidget {
+  const Py1002ScreenWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
+    final milageCash =
+        useState<Parameter>(Parameter(cash: 0, milage: 0, exchange: 0));
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -50,12 +59,13 @@ class _Py1002ScreenState extends State<Py1002Screen> {
                 PlgMargins.v40,
                 CheckBalancePointWidget(
                   buttonText: '잔액조회',
-                  onPasswordChange: (password) => print('password : $password'),
-                  onPhoneNumberChange: (phoneNumber) =>
-                      print('핸드폰 번호 : $phoneNumber'),
+                  onClickBalanceCheck: (phoneNumber, passwrod) {
+                    milageCash.value =
+                        Parameter(cash: 100, milage: 200, exchange: 300);
+                  },
                 ),
                 PlgMargins.v20,
-                const BalanceWideget(),
+                BalanceWideget(parameter: milageCash.value),
                 PlgMargins.v20,
                 Container(
                   width: MediaQuery.of(context).size.width,
@@ -162,8 +172,9 @@ class _Py1002ScreenState extends State<Py1002Screen> {
 class BalanceWideget extends StatelessWidget {
   const BalanceWideget({
     super.key,
+    required this.parameter,
   });
-
+  final Parameter parameter;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -199,20 +210,20 @@ class BalanceWideget extends StatelessWidget {
           ),
         ),
         PlgMargins.v10,
-        const Column(
+        Column(
           children: [
             Text(
-              '14,355 p',
+              '${parameter.cash}P',
               style: PlgStyles.captionBlack2_ff282828_12,
             ),
             PlgMargins.v10,
             Text(
-              '14,355 p',
+              '${parameter.milage}P',
               style: PlgStyles.captionBlack2_ff282828_12,
             ),
             PlgMargins.v10,
             Text(
-              '1,000원',
+              '${parameter.exchange}P',
               style: PlgStyles.captionBlack2_ff282828_12,
             ),
           ],
@@ -225,14 +236,12 @@ class BalanceWideget extends StatelessWidget {
 class CheckBalancePointWidget extends HookWidget {
   const CheckBalancePointWidget({
     required this.buttonText,
-    required this.onPhoneNumberChange,
-    required this.onPasswordChange,
+    required this.onClickBalanceCheck,
     super.key,
   });
 
   final String buttonText;
-  final void Function(String phoneNumber) onPhoneNumberChange;
-  final void Function(String password) onPasswordChange;
+  final void Function(String phoneNumber, String passwrod) onClickBalanceCheck;
 
   @override
   Widget build(BuildContext context) {
@@ -240,14 +249,6 @@ class CheckBalancePointWidget extends HookWidget {
     final passwordController = useTextEditingController();
     final phoneUpdate = useValueListenable(phoneController);
     final passwordUpdate = useValueListenable(passwordController);
-
-    useEffect(() {
-      print(' 핸드폰번호 : $phoneUpdate.phoneNumber');
-      print(' 비밀번호 : $passwordUpdate.password');
-      onPhoneNumberChange(phoneUpdate.text);
-      onPasswordChange(passwordUpdate.text);
-      return null;
-    }, [phoneUpdate.text, passwordUpdate.text]);
 
     return Column(
       children: [
@@ -275,7 +276,7 @@ class CheckBalancePointWidget extends HookWidget {
               margin: const EdgeInsets.all(8),
               child: OutlinedButton(
                 style: OutlinedButton.styleFrom(
-                  minimumSize: const Size(PlgSizes.wh70, PlgSizes.wh20),
+                  minimumSize: const ui.Size(PlgSizes.wh70, PlgSizes.wh20),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(999),
                   ),
@@ -286,7 +287,9 @@ class CheckBalancePointWidget extends HookWidget {
                   "잔액조회",
                   style: PlgStyles.caption2Primary_ff1b9dd9_12,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  onClickBalanceCheck(phoneUpdate.text, passwordUpdate.text);
+                },
               ),
             ),
           ),
@@ -340,12 +343,13 @@ class UsePointWidget extends HookWidget {
         ),
         PlgMargins.v11,
         Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
               child: SizedBox(
                 height: PlgSizes.wh36,
                 child: TextField(
-                  textAlignVertical: TextAlignVertical.center,
+                  textAlignVertical: TextAlignVertical.bottom,
                   controller: controller,
                   decoration: InputDecoration(
                       hintText: '최소 ${minPoint}P',
@@ -359,28 +363,28 @@ class UsePointWidget extends HookWidget {
                 ),
               ),
             ),
-            PlgMargins.h7,
-            OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: PlgSizes.wh1, vertical: PlgSizes.wh1),
-                fixedSize: const Size(PlgSizes.wh70, PlgSizes.wh32),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                side:
-                    const BorderSide(width: 1, color: PlgColor.black1_1a282828),
-              ),
-              onPressed: () {},
-              child: const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  '전액사용',
-                  style: PlgStyles.captionBlack2_ff282828_12,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),
+            // PlgMargins.h7,
+            // OutlinedButton(
+            //   style: OutlinedButton.styleFrom(
+            //     padding: const EdgeInsets.symmetric(
+            //         horizontal: PlgSizes.wh1, vertical: PlgSizes.wh1),
+            //     fixedSize: const Size(PlgSizes.wh70, PlgSizes.wh70),
+            //     shape: RoundedRectangleBorder(
+            //       borderRadius: BorderRadius.circular(4),
+            //     ),
+            //     side:
+            //         const BorderSide(width: 1, color: PlgColor.black1_1a282828),
+            //   ),
+            //   onPressed: () {},
+            //   child: const Padding(
+            //     padding: EdgeInsets.all(8.0),
+            //     child: Text(
+            //       '전액사용',
+            //       style: PlgStyles.captionBlack2_ff282828_12,
+            //       textAlign: TextAlign.center,
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ],

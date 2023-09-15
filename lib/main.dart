@@ -21,7 +21,7 @@ class PalragoUI extends StatelessWidget {
           backgroundColor: PlgColor.white_ffffffff,
         ),
       ),
-      home: const Py1002Screen(),
+      home: const Py1002ScreenWidget(),
     );
   }
 }

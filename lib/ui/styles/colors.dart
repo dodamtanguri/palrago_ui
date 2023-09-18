@@ -41,4 +41,5 @@ class PlgColor {
   static const fill_surface85_d9f8f8f8 = Color(0xd9f8f8f8);
   static const fill_lightgrey_ffeeeeee = Color(0xffeeeeee);
   static const scrim_black35_59000000 = Color(0x59000000);
+  static const temp = Color(0xfff5f6f8);
 }

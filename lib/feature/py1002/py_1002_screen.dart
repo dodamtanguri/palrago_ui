@@ -364,27 +364,27 @@ class UsePointWidget extends HookWidget {
               ),
             ),
             // PlgMargins.h7,
-            // OutlinedButton(
-            //   style: OutlinedButton.styleFrom(
-            //     padding: const EdgeInsets.symmetric(
-            //         horizontal: PlgSizes.wh1, vertical: PlgSizes.wh1),
-            //     fixedSize: const Size(PlgSizes.wh70, PlgSizes.wh70),
-            //     shape: RoundedRectangleBorder(
-            //       borderRadius: BorderRadius.circular(4),
-            //     ),
-            //     side:
-            //         const BorderSide(width: 1, color: PlgColor.black1_1a282828),
-            //   ),
-            //   onPressed: () {},
-            //   child: const Padding(
-            //     padding: EdgeInsets.all(8.0),
-            //     child: Text(
-            //       '전액사용',
-            //       style: PlgStyles.captionBlack2_ff282828_12,
-            //       textAlign: TextAlign.center,
-            //     ),
-            //   ),
-            // ),
+            OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: PlgSizes.wh1, vertical: PlgSizes.wh1),
+                fixedSize: const ui.Size(PlgSizes.wh70, PlgSizes.wh70),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                side:
+                    const BorderSide(width: 1, color: PlgColor.black1_1a282828),
+              ),
+              onPressed: () {},
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  '전액사용',
+                  style: PlgStyles.captionBlack2_ff282828_12,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
           ],
         ),
       ],

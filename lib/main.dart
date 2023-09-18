@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:palrago_ui/feature/py1002/py_1002_screen.dart';
+
+import 'package:palrago_ui/feature/py1002/widgets/search_Input_widget.dart';
+import 'package:palrago_ui/feature/sc1002/recent_watch_product.dart';
 import 'package:palrago_ui/ui/styles/colors.dart';
 
 void main() {
@@ -21,7 +23,7 @@ class PalragoUI extends StatelessWidget {
           backgroundColor: PlgColor.white_ffffffff,
         ),
       ),
-      home: const Py1002ScreenWidget(),
+      home:  const RecentWatchProductScreen(),
     );
   }
 }

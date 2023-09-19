@@ -12,6 +12,11 @@ class SearchListWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        title: Text(''),
+      ),
+    );
   }
 }

@@ -4,6 +4,7 @@ import 'package:palrago_ui/feature/market/widgets/market_list_item_widget.dart';
 import 'package:palrago_ui/feature/market/widgets/market_tab_bar_widget.dart';
 import 'package:palrago_ui/feature/market/widgets/market_tab_body_widget.dart';
 import 'package:palrago_ui/feature/market/widgets/market_title_bar_widget.dart';
+import 'package:palrago_ui/feature/market/widgets/temp_app_bar_widget.dart';
 import 'package:palrago_ui/feature/py1002/widgets/search/search_list_item_widget.dart';
 import 'package:palrago_ui/ui/styles/margins.dart';
 import 'package:palrago_ui/ui/styles/sizes.dart';
@@ -22,21 +23,16 @@ class MarketView extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       appBar: const TestTitleBarWidet(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: PlgSizes.wh20),
         child: Column(
           children: [
-            // SizedBox(
-            //   width: MediaQuery.of(context).size.width,
-            //   height: PlgSizes.wh48,
-            //   child: MarketTitleBarWidget((searchKeyword) { }, () { })
-            // ),
+            
             PlgMargins.h10,
-            Expanded(
-              child: MarketTabBarWidget((p0) { }, (index) { }),
-            ),
+            SizedBox(height: 100, child: MarketTabBarWidget((p0) {})),
             PlgMargins.h10,
-            const Expanded(child: MarketTabBodyWidget(PlgMarketProductCategory.all)),
+            const SizedBox(height: 200, child: MarketTabBodyWidget(PlgMarketProductCategory.all)),
           ],
         ),
       ),

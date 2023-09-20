@@ -16,9 +16,8 @@ typedef OnSearchClicked = void Function(String searchKeyword);
 typedef OnPushMyPageClicked = void Function();
 
 class MarketTitleBarWidget extends HookWidget {
-  const MarketTitleBarWidget(this.onSearchClicked, this.onPushMyPageClicked,
-      {super.key});
-  final OnSearchClicked onSearchClicked;
+  const MarketTitleBarWidget(this.onPushMyPageClicked, {super.key});
+
   final OnPushMyPageClicked onPushMyPageClicked;
 
   @override
@@ -44,28 +43,26 @@ class MarketTitleBarWidget extends HookWidget {
       }
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        title: const Text('팔라고장터'),
-        centerTitle: false,
-        titleTextStyle: PlgStyles.h6Black_ff282828_20,
-        actions: [
-          IconButton(
-            icon: searchIcon,
+    return AppBar(
+      elevation: 0,
+      automaticallyImplyLeading: false,
+      title: const Text('팔라고장터'),
+      centerTitle: false,
+      titleTextStyle: PlgStyles.h6Black_ff282828_20,
+      actions: [
+        IconButton(
+          icon: searchIcon,
+          color: Colors.black,
+          onPressed: onSearchButtonClick,
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: Image.asset(
+            'assets/images/ico_28_my_bold.png',
             color: Colors.black,
-            onPressed: onSearchButtonClick,
           ),
-          IconButton(
-            onPressed: () {},
-            icon: Image.asset(
-              'assets/images/ico_28_my_bold.png',
-              color: Colors.black,
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

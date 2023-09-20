@@ -4,6 +4,31 @@ import 'package:palrago_ui/feature/market/widgets/market_tab_button_widget.dart'
 
 import 'package:palrago_ui/ui/styles/margins.dart';
 
+class MarketTabBarButton {
+  final String imageUrl;
+  final PlgMarketProductCategory category;
+
+  MarketTabBarButton({required this.imageUrl, required this.category});
+}
+
+List<MarketTabBarButton> categories = [
+  MarketTabBarButton(
+      imageUrl: 'assets/images/icon_category_all.png',
+      category: PlgMarketProductCategory.all),
+  MarketTabBarButton(
+      imageUrl: 'assets/images/icon_category_voucher.png',
+      category: PlgMarketProductCategory.giftVoucher),
+  MarketTabBarButton(
+      imageUrl: 'assets/images/icon_category_mart.png',
+      category: PlgMarketProductCategory.conveniencesMart),
+  MarketTabBarButton(
+      imageUrl: 'assets/images/icon_category_mart.png',
+      category: PlgMarketProductCategory.conveniencesMart),
+  MarketTabBarButton(
+      imageUrl: 'assets/images/icon_category_mart.png',
+      category: PlgMarketProductCategory.conveniencesMart),
+];
+
 enum PlgMarketProductCategory {
   all(0, '전체보기'),
   // favoriteSeller(1, '즐겨찾는 판매자'),
@@ -26,68 +51,30 @@ enum PlgMarketProductCategory {
 typedef OnTabSelectClicked = void Function(PlgMarketProductCategory);
 
 class MarketTabBarWidget extends HookWidget {
-  const MarketTabBarWidget(this.onTabSelectClicked, this.onButtonSelected,
-      {super.key});
+  const MarketTabBarWidget(this.onTabSelectClicked, {super.key});
   final OnTabSelectClicked onTabSelectClicked;
-  final void Function(int index) onButtonSelected;
+
   @override
   Widget build(BuildContext context) {
     final selectedIndexButton = useState<int>(0);
-    return Container(
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            MarketTabButtonWidget(
-              categoryImage: 'assets/images/icon_category_all.png',
-              onPressed: (index) => {selectedIndexButton.value = index},
-              index: 0,
+
+    List<Widget> buttons = categories
+        .map((value) => MarketTabButtonWidget(
+              category: value.category,
+              categoryImage: value.imageUrl,
+              onPressed: (index) {
+                selectedIndexButton.value = value.category.categoryId;
+              },
+              index: value.category.categoryId,
               selectedIndex: selectedIndexButton.value,
-              category: PlgMarketProductCategory.all,
-            ),
-            PlgMargins.h10,
-            MarketTabButtonWidget(
-              categoryImage: 'assets/images/icon_category_voucher.png',
-              category: PlgMarketProductCategory.giftVoucher,
-              onPressed: (index) => {selectedIndexButton.value = index},
-              index: 1,
-              selectedIndex: selectedIndexButton.value,
-            ),
-            PlgMargins.h10,
-            MarketTabButtonWidget(
-              categoryImage: 'assets/images/icon_category_mart.png',
-              category: PlgMarketProductCategory.conveniencesMart,
-              onPressed: (index) => {selectedIndexButton.value = index},
-              index: 2,
-              selectedIndex: selectedIndexButton.value,
-            ),
-            PlgMargins.h10,
-            MarketTabButtonWidget(
-              categoryImage: 'assets/images/icon_category_mart.png',
-              category: PlgMarketProductCategory.conveniencesMart,
-              onPressed: (index) => {selectedIndexButton.value = index},
-              index: 3,
-              selectedIndex: selectedIndexButton.value,
-            ),
-            MarketTabButtonWidget(
-              categoryImage: 'assets/images/icon_category_mart.png',
-              category: PlgMarketProductCategory.conveniencesMart,
-              onPressed: (index) => {selectedIndexButton.value = index},
-              index: 4,
-              selectedIndex: selectedIndexButton.value,
-            ),
-            PlgMargins.h10,
-            MarketTabButtonWidget(
-              categoryImage: 'assets/images/icon_category_mart.png',
-              category: PlgMarketProductCategory.conveniencesMart,
-              onPressed: (index) => {selectedIndexButton.value = index},
-              index: 5,
-              selectedIndex: selectedIndexButton.value,
-            ),
-            PlgMargins.h10,
-          ],
-        ),
+            ))
+        .toList();
+
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: buttons,
       ),
     );
   }

@@ -33,7 +33,7 @@ class MarketView extends HookWidget {
             // ),
             PlgMargins.h10,
             Expanded(
-              child: MarketTabBarWidget((p0) {}),
+              child: MarketTabBarWidget((p0) { }, (index) { }),
             ),
             PlgMargins.h10,
             const Expanded(child: MarketTabBodyWidget(PlgMarketProductCategory.all)),

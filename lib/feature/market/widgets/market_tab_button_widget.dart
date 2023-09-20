@@ -7,23 +7,35 @@ import 'package:palrago_ui/ui/styles/sizes.dart';
 import 'package:palrago_ui/ui/styles/styles.dart';
 
 class MarketTabButtonWidget extends HookWidget {
-  const MarketTabButtonWidget(
-    this.category,
-    this.categoryImage, {
+  const MarketTabButtonWidget({
+    required this.category,
+    required this.categoryImage,
+    required this.onPressed,
+    required this.index,
+    required this.selectedIndex,
     super.key,
   });
   final PlgMarketProductCategory category;
   final String categoryImage;
+  final Function onPressed;
+  final int index;
+  final int selectedIndex;
 
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
+      onPressed: () => onPressed(index),
       style: OutlinedButton.styleFrom(
+        splashFactory: NoSplash.splashFactory,
         minimumSize: const Size(PlgSizes.wh96, PlgSizes.wh36),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(999),
         ),
-        side: const BorderSide(width: 1, color: PlgColor.primary_ff1b9dd9),
+        side: BorderSide(
+            width: 1,
+            color: selectedIndex == index
+                ? PlgColor.primary_ff1b9dd9
+                : PlgColor.black15_26282828),
       ),
       child: Row(
         children: [
@@ -31,10 +43,13 @@ class MarketTabButtonWidget extends HookWidget {
           PlgMargins.v4,
           Text(
             category.categoryTitle,
+            style: TextStyle(
+                color: selectedIndex == index
+                    ? PlgColor.primary_ff1b9dd9
+                    : PlgColor.black15_26282828),
           ),
         ],
       ),
-      onPressed: () {},
     );
   }
 }

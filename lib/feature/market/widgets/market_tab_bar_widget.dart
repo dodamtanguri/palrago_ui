@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:palrago_ui/feature/market/widgets/market_tab_button_widget.dart';
-import 'package:palrago_ui/ui/styles/colors.dart';
+
 import 'package:palrago_ui/ui/styles/margins.dart';
-import 'package:palrago_ui/ui/styles/sizes.dart';
-import 'package:palrago_ui/ui/styles/styles.dart';
 
 enum PlgMarketProductCategory {
   all(0, '전체보기'),
@@ -28,39 +26,68 @@ enum PlgMarketProductCategory {
 typedef OnTabSelectClicked = void Function(PlgMarketProductCategory);
 
 class MarketTabBarWidget extends HookWidget {
-  const MarketTabBarWidget(this.onTabSelectClicked, {super.key});
+  const MarketTabBarWidget(this.onTabSelectClicked, this.onButtonSelected,
+      {super.key});
   final OnTabSelectClicked onTabSelectClicked;
-
+  final void Function(int index) onButtonSelected;
   @override
   Widget build(BuildContext context) {
-    final controller = useTabController(initialLength: 3);
-    final index = useState(0);
-    controller.addListener(() {
-      index.value = controller.index;
-    });
+    final selectedIndexButton = useState<int>(0);
     return Container(
-      child: TabBar(
-        controller: controller,
-        labelColor: PlgColor.primary_ff1b9dd9,
-        indicatorColor: PlgColor.primary_ff1b9dd9,
-        isScrollable: true,
-        unselectedLabelColor: PlgColor.grey_cool_ff989a9e,
-        unselectedLabelStyle: PlgStyles.subtitle2Grey_ff999999_14,
-        onTap: (index) {},
-        tabs: const [
-          MarketTabButtonWidget(
-            PlgMarketProductCategory.all,
-            'assets/images/icon_category_all.png',
-          ),
-          MarketTabButtonWidget(
-            PlgMarketProductCategory.giftVoucher,
-            'assets/images/icon_category_voucher.png',
-          ),
-          MarketTabButtonWidget(
-            PlgMarketProductCategory.conveniencesMart,
-            'assets/images/icon_category_mart.png',
-          ),
-        ],
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            MarketTabButtonWidget(
+              categoryImage: 'assets/images/icon_category_all.png',
+              onPressed: (index) => {selectedIndexButton.value = index},
+              index: 0,
+              selectedIndex: selectedIndexButton.value,
+              category: PlgMarketProductCategory.all,
+            ),
+            PlgMargins.h10,
+            MarketTabButtonWidget(
+              categoryImage: 'assets/images/icon_category_voucher.png',
+              category: PlgMarketProductCategory.giftVoucher,
+              onPressed: (index) => {selectedIndexButton.value = index},
+              index: 1,
+              selectedIndex: selectedIndexButton.value,
+            ),
+            PlgMargins.h10,
+            MarketTabButtonWidget(
+              categoryImage: 'assets/images/icon_category_mart.png',
+              category: PlgMarketProductCategory.conveniencesMart,
+              onPressed: (index) => {selectedIndexButton.value = index},
+              index: 2,
+              selectedIndex: selectedIndexButton.value,
+            ),
+            PlgMargins.h10,
+            MarketTabButtonWidget(
+              categoryImage: 'assets/images/icon_category_mart.png',
+              category: PlgMarketProductCategory.conveniencesMart,
+              onPressed: (index) => {selectedIndexButton.value = index},
+              index: 3,
+              selectedIndex: selectedIndexButton.value,
+            ),
+            MarketTabButtonWidget(
+              categoryImage: 'assets/images/icon_category_mart.png',
+              category: PlgMarketProductCategory.conveniencesMart,
+              onPressed: (index) => {selectedIndexButton.value = index},
+              index: 4,
+              selectedIndex: selectedIndexButton.value,
+            ),
+            PlgMargins.h10,
+            MarketTabButtonWidget(
+              categoryImage: 'assets/images/icon_category_mart.png',
+              category: PlgMarketProductCategory.conveniencesMart,
+              onPressed: (index) => {selectedIndexButton.value = index},
+              index: 5,
+              selectedIndex: selectedIndexButton.value,
+            ),
+            PlgMargins.h10,
+          ],
+        ),
       ),
     );
   }

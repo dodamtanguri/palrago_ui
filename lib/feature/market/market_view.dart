@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:palrago_ui/feature/market/widgets/market_list_item_widget.dart';
+import 'package:palrago_ui/feature/market/widgets/market_sort_widget.dart';
 import 'package:palrago_ui/feature/market/widgets/market_tab_bar_widget.dart';
 import 'package:palrago_ui/feature/market/widgets/market_tab_body_widget.dart';
 import 'package:palrago_ui/feature/market/widgets/market_title_bar_widget.dart';
@@ -23,16 +24,21 @@ class MarketView extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: const TestTitleBarWidet(),
+      appBar: const TestTitleBarWidet(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: PlgSizes.wh20),
         child: Column(
           children: [
-            
+            SizedBox(height: PlgSizes.wh36, child: MarketTabBarWidget((p0) {})),
             PlgMargins.h10,
-            SizedBox(height: 100, child: MarketTabBarWidget((p0) {})),
-            PlgMargins.h10,
-            const SizedBox(height: 200, child: MarketTabBodyWidget(PlgMarketProductCategory.all)),
+            const SizedBox(
+              height: 57,
+              child: MarketSortWidget(),
+            ),
+            // SizedBox(
+            //   height: 40,
+            //   child: MarketSortWidget(),
+            // )
           ],
         ),
       ),

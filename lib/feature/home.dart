@@ -15,19 +15,16 @@ class Home extends StatelessWidget {
         title: const Text('Example'),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  pushPage(context, const MarketView(categories: [], marketProductList: [],));
-                },
-                child: const Text('팔라고 장터'),
-              ),
-            ],
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                pushPage(context, const MarketView(categories: [], marketProductList: [],));
+              },
+              child: const Text('팔라고 장터'),
+            ),
+          ],
         ),
       ),
     );

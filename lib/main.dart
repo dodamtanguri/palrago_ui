@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:palrago_ui/feature/home.dart';
 
-import 'package:palrago_ui/feature/py1002/widgets/search_Input_widget.dart';
-import 'package:palrago_ui/feature/sc1002/recent_watch_product.dart';
+
 import 'package:palrago_ui/ui/styles/colors.dart';
 
 void main() {

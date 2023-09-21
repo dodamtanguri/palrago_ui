@@ -71,4 +71,5 @@ class PlgMargins {
   static const h72 = SizedBox(width: PlgSizes.m72);
   static const h80 = SizedBox(width: PlgSizes.m80);
   static const h96 = SizedBox(width: PlgSizes.m96);
+  
 }

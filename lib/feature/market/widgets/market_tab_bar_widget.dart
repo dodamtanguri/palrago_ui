@@ -38,9 +38,9 @@ enum PlgMarketProductCategory {
   // beverageIceCream(5, '커피/음료/아이스크림'),
   // etcCoupon(6, '1+1/할인쿠폰/실물,기타'),
   // bakery(7, '베이커리/도넛/떡'),
-  conveniencesMart(8, '편의점/마트');
+  conveniencesMart(8, '편의점/마트'),
   // ticket(9, '대리예매/영화'),
-  // undefined(0xffff, '');
+   undefined(0xffff, '');
 
   const PlgMarketProductCategory(this.categoryId, this.categoryTitle);
   final int categoryId;
@@ -56,14 +56,14 @@ class MarketTabBarWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final selectedIndexButton = useState<int>(0);
+    final selectedIndexButton = useState<PlgMarketProductCategory>(PlgMarketProductCategory.undefined);
 
     List<Widget> buttons = categories
         .map((value) => MarketTabButtonWidget(
               category: value.category,
               categoryImage: value.imageUrl,
               onPressed: (index) {
-                selectedIndexButton.value = value.category.categoryId;
+                selectedIndexButton.value = value.category;
               },
               index: value.category.categoryId,
               selectedIndex: selectedIndexButton.value,

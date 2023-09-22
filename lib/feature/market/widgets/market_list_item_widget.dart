@@ -42,25 +42,26 @@ class MarketListItemWidget extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
         children: [
-          SizedBox(
-            width: 112,
-            height: 112,
-            child: Stack(
-              children: [
-                Image.asset(marketProduct.imageUrl),
-                if (marketProduct.isSoldOut)
-                  Container(
-                    color: PlgColor.black7_b3282828.withOpacity(0.7),
-                    alignment: Alignment.center,
-                    child: const Text(
-                      '판매완료',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              Image.asset(marketProduct.imageUrl,),
+              if (marketProduct.isSoldOut)
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.black38.withOpacity(0.7),
                     ),
-                  )
-              ],
-            ),
+                  ),
+                ),
+              const Text(
+                '판매완료',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            ],
           ),
           PlgMargins.h12,
           Container(
@@ -104,6 +105,7 @@ class MarketListItemWidget extends HookWidget {
                     ),
                   ],
                 ),
+                PlgMargins.v6,
                 Row(
                   children: [
                     Text(

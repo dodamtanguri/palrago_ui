@@ -18,7 +18,7 @@ class MarketTabButtonWidget extends HookWidget {
   final String categoryImage;
   final Function onPressed;
   final int index;
-  final int selectedIndex;
+  final PlgMarketProductCategory selectedIndex;
 
   @override
   Widget build(BuildContext context) {

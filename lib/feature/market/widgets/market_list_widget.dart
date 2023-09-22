@@ -11,16 +11,14 @@ class MarketListWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> itemList = marketProducts
-        .map(
-          (value) => MarketListItemWidget(value, () {}),
-        )
-        .toList();
-
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: itemList,
+        children: marketProducts
+            .map(
+              (value) => MarketListItemWidget(value, () {}),
+            )
+            .toList(),
       ),
     );
   }

@@ -7,7 +7,7 @@ import 'package:palrago_ui/ui/styles/styles.dart';
 
 class StoreAppBarWidget extends HookWidget implements PreferredSizeWidget {
   const StoreAppBarWidget({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     return AppBar(

@@ -7,6 +7,7 @@ import 'package:palrago_ui/feature/store/widgets/store_product_detail_widget.dar
 import 'package:palrago_ui/feature/store/widgets/store_purchase_widget.dart';
 import 'package:palrago_ui/feature/store/widgets/store_refund_notice_widget.dart';
 import 'package:palrago_ui/ui/styles/colors.dart';
+import 'package:palrago_ui/ui/styles/margins.dart';
 
 // List에서 받은 Product 객체
 @immutable
@@ -69,11 +70,16 @@ class StoreDetailView extends HookWidget {
         child: ListView(
           children: [
             StoreProductDetailWidget(temp),
+            const Divider(
+              thickness: 1,
+              color: PlgColor.black5_0d282828,
+            ),
             const StoreRefundNoticeWidget(),
             const Divider(
               thickness: 1,
-              color: PlgColor.black15_26282828,
+              color: PlgColor.black5_0d282828,
             ),
+            PlgMargins.v24,
             const StorePurchaseDetailWidget(),
           ],
         ),

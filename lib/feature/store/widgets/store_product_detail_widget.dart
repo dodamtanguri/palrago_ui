@@ -44,7 +44,7 @@ class StoreProductDetailWidget extends HookWidget {
                 ),
               ),
               Text(
-                '${product.price}',
+                '${product.price}원',
                 style: const TextStyle(
                     decoration: TextDecoration.lineThrough,
                     color: PlgColor.grey_ff999999,
@@ -55,6 +55,7 @@ class StoreProductDetailWidget extends HookWidget {
               ),
               PlgMargins.v6,
               Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
                     '${product.palragoPrice}',
@@ -62,7 +63,7 @@ class StoreProductDetailWidget extends HookWidget {
                   ),
                   const Text(
                     ' 원',
-                    style: PlgStyles.body2Grey_ff999999_14,
+                    style: PlgStyles.body2Black_ff282828_14,
                   ),
                 ],
               ),

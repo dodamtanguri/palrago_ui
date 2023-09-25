@@ -80,7 +80,7 @@ class StoreDetailView extends HookWidget {
               color: PlgColor.black5_0d282828,
             ),
             PlgMargins.v24,
-            const StorePurchaseDetailWidget(),
+            StorePurchaseDetailWidget(temp),
           ],
         ),
       ),

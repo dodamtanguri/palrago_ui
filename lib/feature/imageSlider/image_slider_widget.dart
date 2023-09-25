@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//https://gist.github.com/IshanFx/48d64b08c5d66eae4b42484c20fc9280 
 
 class Carousel extends StatefulWidget {
   const Carousel({

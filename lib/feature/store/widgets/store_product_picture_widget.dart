@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:palrago_ui/ui/styles/colors.dart';
 
@@ -12,31 +11,39 @@ class StoreProductPictureWidget extends StatefulWidget {
 }
 
 class _StoreProductPictureWidgetState extends State<StoreProductPictureWidget> {
-  late PageController pageController =
-      PageController(viewportFraction: 0.8, initialPage: 1);
-  int activePage = 1;
+  late PageController pageController;
+
+  int activePage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    pageController = PageController(viewportFraction: 0.8, initialPage: 0);
+  }
+
   @override
   Widget build(BuildContext context) {
     // List imgList = widget.imageUrl.map((e) => Image.asset(e)).toList();
     List imgList = widget.imageUrl;
-    int activePage = 1;
+
     return Column(
       children: [
         SizedBox(
           height: 360,
           child: PageView.builder(
-            pageSnapping: true,
             itemCount: widget.imageUrl.length,
+            pageSnapping: true,
             controller: pageController,
-            itemBuilder: (context, pagePosition) {
-              bool active = pagePosition == activePage;
-
-              return slider(imgList, pagePosition, active);
-            },
             onPageChanged: (page) {
               setState(() {
                 activePage = page;
               });
+            },
+            itemBuilder: (context, pagePosition) {
+              print(pagePosition);
+              print("active page가 첫시작이 0이어야함 : $activePage");
+              bool active = pagePosition == activePage;
+              return slider(imgList, pagePosition, active);
             },
           ),
         ),
@@ -63,8 +70,6 @@ class _StoreProductPictureWidgetState extends State<StoreProductPictureWidget> {
     return AnimatedBuilder(
       animation: animation,
       builder: (context, widget) {
-        print(pagePosition);
-
         return SizedBox(
           width: 200,
           height: 200,
@@ -80,6 +85,9 @@ class _StoreProductPictureWidgetState extends State<StoreProductPictureWidget> {
 
   List<Widget> indicators(imagesLength, currentIndex) {
     return List<Widget>.generate(imagesLength, (index) {
+      print('indicators imagesLength : $imagesLength');
+      print('indicators currentIndex : $currentIndex');
+      print('indicators index : $index');
       return Container(
         margin: const EdgeInsets.all(3),
         width: 6,

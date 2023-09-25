@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:palrago_ui/feature/imageSlider/image_slider_view.dart';
+import 'package:palrago_ui/feature/imageSlider/image_slider_widget.dart';
 import 'package:palrago_ui/feature/market/market_view.dart';
 import 'package:palrago_ui/feature/store/store_detail_view.dart';
 
@@ -35,6 +37,12 @@ class Home extends StatelessWidget {
                 pushPage(context, const StoreDetailView());
               },
               child: const Text('스토어 상세 페이지'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                pushPage(context, const ImageSliderView());
+              },
+              child: const Text('이미지 슬라이더 위젯'),
             ),
           ],
         ),

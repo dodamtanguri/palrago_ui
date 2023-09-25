@@ -72,7 +72,7 @@ class StoreProductDetailWidget extends HookWidget {
         ),
         const Divider(
           thickness: 12,
-          color: PlgColor.black15_26282828,
+          color: PlgColor.surface_fff8f8f8,
         ),
         Padding(
           padding: const EdgeInsets.only(

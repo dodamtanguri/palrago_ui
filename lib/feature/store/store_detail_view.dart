@@ -42,7 +42,7 @@ StoreProductVo temp = StoreProductVo(
     discount: 10,
     price: 9800,
     palragoPrice: 13200,
-    imageUrl: const ['assets/images/img.png'],
+    imageUrl: const ['assets/images/img.png', 'assets/images/img.png'],
     registDate: DateTime.now(),
     exprireDate: DateTime.now().add(const Duration(days: 30)),
     isSoldOut: false,

@@ -1,8 +1,10 @@
 /// 스토어 상세 페이지 app bar
 ///
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:palrago_ui/feature/store/store_detail_view.dart';
+import 'package:palrago_ui/feature/store/widgets/store_product_picture_widget.dart';
 import 'package:palrago_ui/ui/styles/colors.dart';
 import 'package:palrago_ui/ui/styles/margins.dart';
 import 'package:palrago_ui/ui/styles/sizes.dart';
@@ -26,6 +28,9 @@ class StoreProductDetailWidget extends HookWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              StoreProductPictureWidget(
+                imageUrl: product.imageUrl,
+              ),
               Text(
                 product.brand,
                 style: PlgStyles.body2Grey_ff999999_14,
@@ -70,7 +75,11 @@ class StoreProductDetailWidget extends HookWidget {
           color: PlgColor.black15_26282828,
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: PlgSizes.m20),
+          padding: const EdgeInsets.only(
+              left: PlgSizes.m20,
+              right: PlgSizes.m20,
+              top: PlgSizes.m24,
+              bottom: PlgSizes.m32),
           child: Text(
             product.description,
             style: const TextStyle(

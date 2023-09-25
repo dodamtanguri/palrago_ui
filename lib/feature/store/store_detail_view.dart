@@ -16,7 +16,7 @@ class StoreProductVo {
   final int discount;
   final int price;
   final int palragoPrice;
-  final String imageUrl;
+  final List<String> imageUrl;
   final DateTime registDate;
   final DateTime exprireDate;
   final bool isSoldOut;
@@ -42,12 +42,11 @@ StoreProductVo temp = StoreProductVo(
     discount: 10,
     price: 9800,
     palragoPrice: 13200,
-    imageUrl: 'assets/images/img.png',
+    imageUrl: const ['assets/images/img.png'],
     registDate: DateTime.now(),
     exprireDate: DateTime.now().add(const Duration(days: 30)),
     isSoldOut: false,
-    description:
-        """상품설명
+    description: """상품설명
 - ﻿﻿카페 아메리카노 Tall 2잔+부드러운 생크림 카스텔라
 * ﻿﻿유의사항
 - ﻿﻿상기 이미지는 연출된 것으로 실제와 다를 수 있습니다.

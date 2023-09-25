@@ -8,10 +8,9 @@ class StorePurchaseDetailWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-
+    return Container(
       color: Colors.amber,
-      child: Text('선물하기/구매하기 버튼'),
+      child: const Text('선물하기'),
     );
   }
 }

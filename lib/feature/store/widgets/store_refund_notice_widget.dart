@@ -10,7 +10,7 @@ class StoreRefundNoticeWidget extends HookWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.teal,
-      child: Text('환불/유효기간 연장 안내 Listtile로 구현 예정'),
+      child: const Text('환불/유효기간 연장 안내 Listtile로 구현 예정'),
     );
   }
 }

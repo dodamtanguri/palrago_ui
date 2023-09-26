@@ -32,6 +32,7 @@ class StorePurchaseDetailWidget extends HookWidget {
         right: PlgSizes.m20,
       ),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           StoreButtonWidget(
@@ -42,12 +43,14 @@ class StorePurchaseDetailWidget extends HookWidget {
             textStyle: PlgStyles.subtitle1Primary_ff1b9dd9_16,
           ),
           PlgMargins.h8,
-          StoreButtonWidget(
-            textStyle: PlgStyles.subtitle1White_ffffffff_16,
-            backgroundColor: PlgColor.primary_ff1b9dd9,
-            onButtonClicked: onPurchaseClicked,
-            buttonTitle: '구매하기',
-            horizontalMargin: PlgSizes.m80,
+          Expanded(
+            child: StoreButtonWidget(
+              textStyle: PlgStyles.subtitle1White_ffffffff_16,
+              backgroundColor: PlgColor.primary_ff1b9dd9,
+              onButtonClicked: onPurchaseClicked,
+              buttonTitle: '구매하기',
+              horizontalMargin: PlgSizes.m80,
+            ),
           ),
         ],
       ),

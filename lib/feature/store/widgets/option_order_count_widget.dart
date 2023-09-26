@@ -120,14 +120,17 @@ class OptionOrderCountWidget extends HookWidget {
             ),
           ),
           PlgMargins.v16,
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            child: StoreButtonWidget(
-              textStyle: PlgStyles.subtitle1White_ffffffff_16,
-              backgroundColor: PlgColor.primary_ff1b9dd9,
-              onButtonClicked: () {},
-              buttonTitle: '결제하기',
-              horizontalMargin: 138,
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: Padding(
+              padding: const EdgeInsets.only(top: PlgSizes.m20 ),
+              child: StoreButtonWidget(
+                textStyle: PlgStyles.subtitle1White_ffffffff_16,
+                backgroundColor: PlgColor.primary_ff1b9dd9,
+                onButtonClicked: () {},
+                buttonTitle: '결제하기',
+                horizontalMargin: 138,
+              ),
             ),
           ),
         ],

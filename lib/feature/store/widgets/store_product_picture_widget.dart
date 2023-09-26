@@ -56,7 +56,7 @@ class _StoreProductPictureWidgetState extends State<StoreProductPictureWidget> {
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOutCubic,
+      // curve: Curves.easeInOutCubic,
       margin: EdgeInsets.all(margin),
       decoration: BoxDecoration(
           image: DecorationImage(image: AssetImage(images[pagePosition]))),

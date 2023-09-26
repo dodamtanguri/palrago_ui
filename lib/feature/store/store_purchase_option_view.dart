@@ -21,7 +21,9 @@ class StorePurchaseOptionView extends HookWidget {
         borderRadius: BorderRadius.circular(PlgSizes.wh20),
       ),
       child: Scaffold(
-          appBar: const StoreAppBarWidget(),
+          appBar: const StoreAppBarWidget(
+            title: '구매 옵션',
+          ),
           backgroundColor: PlgColor.white_ffffffff,
           body: Column(
             children: [

@@ -23,7 +23,6 @@ class _StoreProductPictureWidgetState extends State<StoreProductPictureWidget> {
 
   @override
   Widget build(BuildContext context) {
-    // List imgList = widget.imageUrl.map((e) => Image.asset(e)).toList();
     List imgList = widget.imageUrl;
 
     return Column(
@@ -40,8 +39,6 @@ class _StoreProductPictureWidgetState extends State<StoreProductPictureWidget> {
               });
             },
             itemBuilder: (context, pagePosition) {
-              print(pagePosition);
-              print("active page가 첫시작이 0이어야함 : $activePage");
               bool active = pagePosition == activePage;
               return slider(imgList, pagePosition, active);
             },
@@ -85,17 +82,14 @@ class _StoreProductPictureWidgetState extends State<StoreProductPictureWidget> {
 
   List<Widget> indicators(imagesLength, currentIndex) {
     return List<Widget>.generate(imagesLength, (index) {
-      print('indicators imagesLength : $imagesLength');
-      print('indicators currentIndex : $currentIndex');
-      print('indicators index : $index');
       return Container(
         margin: const EdgeInsets.all(3),
         width: 6,
         height: 6,
         decoration: BoxDecoration(
             color: currentIndex == index
-                ? PlgColor.black15_26282828
-                : PlgColor.black_ff282828,
+                ? PlgColor.black_ff282828
+                : PlgColor.black15_26282828,
             shape: BoxShape.circle),
       );
     });

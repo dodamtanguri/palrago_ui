@@ -15,10 +15,10 @@ class StorePurchaseOptionView extends HookWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      height: size.height * 0.70,
+      height: size.height * 0.5,
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(PlgSizes.wh14),
+        borderRadius: BorderRadius.circular(PlgSizes.wh20),
       ),
       child: Scaffold(
           appBar: const StoreAppBarWidget(),

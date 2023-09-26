@@ -21,18 +21,19 @@ class StorePurchaseOptionView extends HookWidget {
         borderRadius: BorderRadius.circular(PlgSizes.wh20),
       ),
       child: Scaffold(
-          appBar: const StoreAppBarWidget(
-            title: '구매 옵션',
-          ),
-          backgroundColor: PlgColor.white_ffffffff,
-          body: Column(
-            children: [
-              OptionItemWidget(
-                product: product,
-              ),
-              OptionOrderCountWidget(price: product.palragoPrice),
-            ],
-          )),
+        appBar: const StoreAppBarWidget(
+          title: '구매 옵션',
+        ),
+        backgroundColor: PlgColor.white_ffffffff,
+        body: Column(
+          children: [
+            OptionItemWidget(
+              product: product,
+            ),
+            OptionOrderCountWidget(price: product.palragoPrice),
+          ],
+        ),
+      ),
     );
   }
 }

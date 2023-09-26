@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:palrago_ui/feature/store/widgets/store_button_widget.dart';
 import 'package:palrago_ui/ui/styles/colors.dart';
 import 'package:palrago_ui/ui/styles/margins.dart';
 import 'package:palrago_ui/ui/styles/sizes.dart';
@@ -70,7 +71,8 @@ class OptionOrderCountWidget extends HookWidget {
                     ),
                     PlgMargins.h8,
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: PlgSizes.m12),
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: PlgSizes.m12),
                       child: Text(
                         '${orderCount.value}',
                         style: PlgStyles.body1Black_ff282828_16,
@@ -120,26 +122,14 @@ class OptionOrderCountWidget extends HookWidget {
           PlgMargins.v16,
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20),
-            child: FilledButton(
-              onPressed: () {},
-              style: FilledButton.styleFrom(
-                backgroundColor: PlgColor.primary_ff1b9dd9,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14.0),
-                ),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: PlgSizes.m18,
-                  horizontal: 138,
-                ),
-                child: Text(
-                  '구매하기',
-                  style: PlgStyles.subtitle1White_ffffffff_16,
-                ),
-              ),
+            child: StoreButtonWidget(
+              textStyle: PlgStyles.subtitle1White_ffffffff_16,
+              backgroundColor: PlgColor.primary_ff1b9dd9,
+              onButtonClicked: () {},
+              buttonTitle: '결제하기',
+              horizontalMargin: 138,
             ),
-          )
+          ),
         ],
       ),
     );

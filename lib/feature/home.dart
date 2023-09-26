@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:palrago_ui/feature/imageSlider/image_slider_view.dart';
-import 'package:palrago_ui/feature/imageSlider/image_slider_widget.dart';
 import 'package:palrago_ui/feature/market/market_view.dart';
 import 'package:palrago_ui/feature/store/store_detail_view.dart';
 

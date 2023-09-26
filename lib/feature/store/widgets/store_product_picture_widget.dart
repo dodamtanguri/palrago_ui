@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:palrago_ui/ui/styles/colors.dart';
+import 'package:palrago_ui/ui/styles/sizes.dart';
 
 class StoreProductPictureWidget extends StatefulWidget {
   const StoreProductPictureWidget({super.key, required this.imageUrl});
@@ -52,12 +53,9 @@ class _StoreProductPictureWidgetState extends State<StoreProductPictureWidget> {
   }
 
   AnimatedContainer slider(images, pagePosition, active) {
-    double margin = active ? 10 : 20;
-
     return AnimatedContainer(
       duration: const Duration(milliseconds: 500),
-      // curve: Curves.easeInOutCubic,
-      margin: EdgeInsets.all(margin),
+      margin: const EdgeInsets.all(PlgSizes.m10),
       decoration: BoxDecoration(
           image: DecorationImage(image: AssetImage(images[pagePosition]))),
     );

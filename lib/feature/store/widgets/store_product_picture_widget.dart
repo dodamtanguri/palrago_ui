@@ -3,8 +3,8 @@ import 'package:palrago_ui/ui/styles/colors.dart';
 import 'package:palrago_ui/ui/styles/sizes.dart';
 
 class StoreProductPictureWidget extends StatefulWidget {
-  const StoreProductPictureWidget({super.key, required this.imageUrl});
-  final List<String> imageUrl;
+  const StoreProductPictureWidget({super.key, required this.imageUrls});
+  final List<String> imageUrls;
 
   @override
   State<StoreProductPictureWidget> createState() =>
@@ -24,14 +24,14 @@ class _StoreProductPictureWidgetState extends State<StoreProductPictureWidget> {
 
   @override
   Widget build(BuildContext context) {
-    List imgList = widget.imageUrl;
+    List imgList = widget.imageUrls;
 
     return Column(
       children: [
         SizedBox(
           height: 360,
           child: PageView.builder(
-            itemCount: widget.imageUrl.length,
+            itemCount: widget.imageUrls.length,
             pageSnapping: true,
             controller: pageController,
             onPageChanged: (page) {

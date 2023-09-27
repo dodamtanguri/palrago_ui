@@ -12,7 +12,7 @@ import 'package:palrago_ui/ui/styles/sizes.dart';
 typedef ProductList = List<ProductVo>;
 
 class MarketView extends HookWidget {
- const MarketView({
+  const MarketView({
     super.key,
     required this.categories,
     required this.marketProductList,
@@ -20,12 +20,10 @@ class MarketView extends HookWidget {
   final List<PlgMarketProductCategory> categories;
   final List<MarketProductVo> marketProductList;
 
-  
-
   @override
   Widget build(BuildContext context) {
     List<MarketProductVo> items = [
-    MarketProductVo(
+      MarketProductVo(
         brand: 'Sample Brand1',
         title: '스타벅스 아이스 카페 아메리카노 Tall 1+1 (강남역점 테이크아웃 전용)',
         discount: 10,
@@ -35,9 +33,8 @@ class MarketView extends HookWidget {
         registDate: DateTime.now(),
         exprireDate: DateTime.now().add(const Duration(days: 30)),
         isSoldOut: false,
-        
-        ),
-    MarketProductVo(
+      ),
+      MarketProductVo(
         brand: 'Sample Brand2',
         title: '스타벅스 아이스 카페 아메리카노 Tall 1+1 (강남역점 테이크아웃 전용)',
         discount: 10,
@@ -46,8 +43,9 @@ class MarketView extends HookWidget {
         imageUrl: 'assets/images/img.png',
         registDate: DateTime.now(),
         exprireDate: DateTime.now().add(const Duration(days: 30)),
-        isSoldOut: false,),
-    MarketProductVo(
+        isSoldOut: false,
+      ),
+      MarketProductVo(
         brand: 'Sample Brand3',
         title: '스타벅스 아이스 카페 아메리카노 Tall 1+1 (강남역점 테이크아웃 전용)',
         discount: 10,
@@ -56,8 +54,9 @@ class MarketView extends HookWidget {
         imageUrl: 'assets/images/img.png',
         registDate: DateTime.now(),
         exprireDate: DateTime.now().add(const Duration(days: 30)),
-        isSoldOut: false,),
-        MarketProductVo(
+        isSoldOut: false,
+      ),
+      MarketProductVo(
         brand: 'Sample Brand3',
         title: '스타벅스 아이스 카페 아메리카노 Tall 1+1 (강남역점 테이크아웃 전용)',
         discount: 10,
@@ -66,8 +65,9 @@ class MarketView extends HookWidget {
         imageUrl: 'assets/images/img.png',
         registDate: DateTime.now(),
         exprireDate: DateTime.now().add(const Duration(days: 30)),
-        isSoldOut: true,),
-        MarketProductVo(
+        isSoldOut: true,
+      ),
+      MarketProductVo(
         brand: 'Sample Brand3',
         title: '스타벅스 아이스 카페 아메리카노 Tall 1+1 (강남역점 테이크아웃 전용)',
         discount: 10,
@@ -76,8 +76,9 @@ class MarketView extends HookWidget {
         imageUrl: 'assets/images/img.png',
         registDate: DateTime.now(),
         exprireDate: DateTime.now().add(const Duration(days: 30)),
-        isSoldOut: true,),
-        MarketProductVo(
+        isSoldOut: true,
+      ),
+      MarketProductVo(
         brand: 'Sample Brand3',
         title: '스타벅스 아이스 카페 아메리카노 Tall 1+1 (강남역점 테이크아웃 전용)',
         discount: 10,
@@ -86,8 +87,9 @@ class MarketView extends HookWidget {
         imageUrl: 'assets/images/img.png',
         registDate: DateTime.now(),
         exprireDate: DateTime.now().add(const Duration(days: 30)),
-        isSoldOut: true,),
-        MarketProductVo(
+        isSoldOut: true,
+      ),
+      MarketProductVo(
         brand: 'Sample Brand3',
         title: '스타벅스 아이스 카페 아메리카노 Tall 1+1 (강남역점 테이크아웃 전용)',
         discount: 10,
@@ -96,26 +98,27 @@ class MarketView extends HookWidget {
         imageUrl: 'assets/images/img.png',
         registDate: DateTime.now(),
         exprireDate: DateTime.now().add(const Duration(days: 30)),
-        isSoldOut: true,),
-  ];
+        isSoldOut: true,
+      ),
+    ];
     return Scaffold(
       appBar: const TestTitleBarWidet(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: PlgSizes.wh20),
-        child: Column(
-          children: [
-            SizedBox(height: PlgSizes.wh36, child: MarketTabBarWidget((p0) {})),
-            PlgMargins.h10,
-            const SizedBox(
-              height: 57,
-              child: MarketSortWidget(),
-            ),
-            // SizedBox(
-            //   height: 112,
-            //   child: MarketListItemWidget(marketProduct, () {}),
-            // )
-            Expanded(child: MarketListWidget(items, () {}))
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: PlgSizes.wh20),
+          child: Column(
+            children: [
+              SizedBox(
+                  height: PlgSizes.wh36, child: MarketTabBarWidget((p0) {})),
+              PlgMargins.h10,
+              const MarketSortWidget(),
+              // SizedBox(
+              //   height: 112,
+              //   child: MarketListItemWidget(marketProduct, () {}),
+              // )
+              Expanded(child: MarketListWidget(items, () {}))
+            ],
+          ),
         ),
       ),
     );

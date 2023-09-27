@@ -65,9 +65,12 @@ class StoreDetailView extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const StoreAppBarWidget(title: '상품상세',),
+      appBar: const StoreAppBarWidget(
+        title: '상품상세',
+      ),
       body: SafeArea(
-        child: ListView(
+        child: SingleChildScrollView(
+            child: Column(
           children: [
             StoreProductDetailWidget(temp),
             const Divider(
@@ -82,7 +85,7 @@ class StoreDetailView extends HookWidget {
             PlgMargins.v24,
             StorePurchaseDetailWidget(temp),
           ],
-        ),
+        ),),
       ),
     );
   }

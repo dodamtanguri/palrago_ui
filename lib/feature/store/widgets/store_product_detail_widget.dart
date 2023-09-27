@@ -28,7 +28,7 @@ class StoreProductDetailWidget extends HookWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               StoreProductPictureWidget(
-                imageUrl: product.imageUrl,
+                imageUrls: product.imageUrl,
               ),
               Text(
                 product.brand,
@@ -44,7 +44,8 @@ class StoreProductDetailWidget extends HookWidget {
               ),
               Text(
                 '${product.price}원',
-                style: const TextStyle(
+                style:  
+                const TextStyle(
                     decoration: TextDecoration.lineThrough,
                     color: PlgColor.grey_ff999999,
                     fontWeight: FontWeight.w400,

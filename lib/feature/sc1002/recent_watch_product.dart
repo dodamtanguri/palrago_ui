@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:palrago_ui/feature/py1002/widgets/search_Input_widget.dart';
+import 'package:palrago_ui/feature/py1002/widgets/search/search_Input_widget.dart';
 import 'package:palrago_ui/feature/py1002/widgets/tabBarView.dart';
 import 'package:palrago_ui/ui/styles/margins.dart';
 import 'package:palrago_ui/ui/styles/sizes.dart';

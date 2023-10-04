@@ -38,6 +38,7 @@ dependencies:
   intl: ^0.18.0
   carousel_slider: ^4.2.1
   carousel_indicator: ^1.0.6
+  font_awesome_flutter: 10.3.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,55 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:palrago_ui/feature/market/widgets/market_tab_bar_widget.dart';
+import 'package:palrago_ui/feature/recent/enums/tab_category.dart';
 import 'package:palrago_ui/ui/styles/colors.dart';
 import 'package:palrago_ui/ui/styles/margins.dart';
 import 'package:palrago_ui/ui/styles/sizes.dart';
-
-enum TabCategory {
-  recentlyKeyword(100, '최근검색어'),
-  popular(200, '인기 검색어'),
-  recentlyProduct(300, '최근 본 상품'),
-  foundMember(400, '찾은 회원');
-
-  const TabCategory(this.tabId, this.title);
-
-  final int tabId;
-  final String title;
-}
-
-class RecentTabBarButton {
-  final TabCategory category;
-  RecentTabBarButton({required this.category});
-}
-
-List<RecentTabBarButton> categories = [];
+import 'package:palrago_ui/ui/styles/styles.dart';
 
 class SearchTabButtonWidget extends HookWidget {
   const SearchTabButtonWidget({
     required this.category,
     required this.onPressed,
     required this.index,
-    required this.selectedIndex,
+    required this.selectIndex,
     super.key,
   });
-  final TabCategory category;
+  final StoreTabCategory category;
   final Function onPressed;
   final int index;
-  final TabCategory selectedIndex;
+  final StoreTabCategory selectIndex;
 
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
+      onPressed: () => onPressed(index),
       style: OutlinedButton.styleFrom(
-        backgroundColor: Colors.white, // Button color
-        foregroundColor: Colors.lime,
-
         splashFactory: NoSplash.splashFactory,
-        side: const BorderSide(width: 3, color: Colors.black),
+        side: selectIndex.tabId == index
+            ? const BorderSide(width: 3.0, color: PlgColor.primary_ff1b9dd9)
+            : const BorderSide(width: 0, color: Colors.transparent),
         shape: LinearBorder.bottom(),
       ),
-      onPressed: () => print('출력이되나'),
-      child: const Text('Outlined'),
+      child: Text(
+        category.title,
+        style: selectIndex.tabId == index ? 
+          PlgStyles.subtitle2Primary_ff1b9dd9_14 : PlgStyles.subtitle2B3_4d282828_14
+      ),
     );
   }
 }

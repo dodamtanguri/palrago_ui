@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:palrago_ui/feature/home.dart';
 
-
 import 'package:palrago_ui/ui/styles/colors.dart';
 
 void main() {
@@ -22,8 +21,14 @@ class PalragoUI extends StatelessWidget {
         appBarTheme: const AppBarTheme(
           backgroundColor: PlgColor.white_ffffffff,
         ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: ButtonStyle(
+            overlayColor:
+                MaterialStateColor.resolveWith((states) => Colors.transparent),
+          ),
+        ),
       ),
-      home:  const Home(),
+      home: const Home(),
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:palrago_ui/feature/recent/widgets/search_bar_widget_flexible.dar
 import 'package:palrago_ui/feature/recent/widgets/search_tab_bar_widget.dart';
 
 import 'package:palrago_ui/feature/store/widgets/store_app_bar_widget.dart';
+import 'package:palrago_ui/ui/styles/margins.dart';
 import 'package:palrago_ui/ui/styles/sizes.dart';
 
 import 'widgets/search_bar_widget.dart';
@@ -21,9 +22,9 @@ class RecentSearchView extends HookWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              // SearchBarWidget(() {}),
-              SearchBarWidgetByFlexible(() {}),
-              SearchTabBarWidget((p0) {})
+              SearchBarWidget(() {}),
+              PlgMargins.v10,
+              SearchTabBarWidget((p0) {}),
             ],
           ),
         ),

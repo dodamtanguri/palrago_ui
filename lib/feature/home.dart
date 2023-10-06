@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:palrago_ui/feature/imageSlider/image_slider_view.dart';
 import 'package:palrago_ui/feature/market/market_view.dart';
 import 'package:palrago_ui/feature/recent/recent_search_view.dart';
-import 'package:palrago_ui/feature/recent/tab_button_test_view.dart';
-import 'package:palrago_ui/feature/recent/widgets/search_tab_button_widget.dart';
 import 'package:palrago_ui/feature/store/store_detail_view.dart';
 
 class Home extends StatelessWidget {
@@ -51,15 +49,6 @@ class Home extends StatelessWidget {
                 pushPage(context, const RecentSearchView());
               },
               child: const Text('최근 본 상품 탭 페이지'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                pushPage(
-                  context,
-                  const TabButtonTestView(),
-                );
-              },
-              child: const Text('최근 본 상품 탭 버튼 widget'),
             ),
           ],
         ),

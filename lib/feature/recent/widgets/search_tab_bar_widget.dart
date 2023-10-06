@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:palrago_ui/feature/py1002/widgets/search/search_tab_bar_widget.dart';
 import 'package:palrago_ui/feature/recent/enums/tab_category.dart';
 import 'package:palrago_ui/feature/recent/widgets/search_tab_button_widget.dart';
 
@@ -28,25 +27,29 @@ class SearchTabBarWidget extends HookWidget {
     //default : 최근 검색어
     final buttonSelected =
         useState<StoreTabCategory>(StoreTabCategory.recentlyKeyword);
-        
+
     List<Widget> buttons = categories
         .map(
-          (value) => SearchTabButtonWidget(
-            category: value.category,
-            onPressed: (index) {
-              buttonSelected.value = value.category;
+          (button) => SearchTabButtonWidget(
+            tag: button.category,
+            onPressed: (tag) {
+              buttonSelected.value = button.category;
+              onTabSelectedClicked(tag);
             },
-            index: value.category.tabId,
-            selectIndex: buttonSelected.value,
+            selected: buttonSelected.value == button.category,
           ),
         )
         .toList();
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: buttons,
-      ),
+    return Column(
+      children: [
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: buttons,
+          ),
+        ),
+      ],
     );
   }
 }

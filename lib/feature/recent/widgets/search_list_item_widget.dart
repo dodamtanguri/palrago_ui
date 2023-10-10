@@ -1,21 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-
-@immutable
-class ProductVo {
-  final String imageUrl;
-  final String brand;
-  final String title;
-  final int price;
-  final int discount;
-
-  const ProductVo(
-      {required this.imageUrl,
-      required this.brand,
-      required this.title,
-      required this.price,
-      required this.discount});
-}
+import 'package:palrago_ui/feature/recent/models/product_item.dart';
+import 'package:palrago_ui/ui/styles/margins.dart';
+import 'package:palrago_ui/ui/styles/sizes.dart';
+import 'package:palrago_ui/ui/styles/styles.dart';
 
 typedef OnProductEventCallback = void Function(int tabId, int productId);
 
@@ -33,10 +21,71 @@ class SearchListItemWidget extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Row(
-      children: [
-        Image.asset(product.imageUrl),
-      ],
-    ));
+      decoration: BoxDecoration(
+        color: Colors.white, // Light grey background
+
+        borderRadius: BorderRadius.circular(10), // Rounded corner
+      ),
+      margin: const EdgeInsets.symmetric(
+          horizontal: PlgSizes.wh20, vertical: PlgSizes.wh10),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+            horizontal: PlgSizes.wh20, vertical: PlgSizes.wh20),
+        child: Stack(
+          children: [
+            Row(
+              children: [
+                SizedBox(
+                  width: PlgSizes.wh96,
+                  height: PlgSizes.wh96,
+                  child: Image.asset(product.imageUrl),
+                ),
+                PlgMargins.h10,
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        product.brand,
+                        style: PlgStyles.captionGrey_ff999999_12,
+                      ),
+                      PlgMargins.v5,
+                      Text(
+                        product.title,
+                        maxLines: 5, // Maximum number of lines
+                        overflow: TextOverflow.visible,
+                        style: PlgStyles.captionRightBlack_ff282828_12,
+                      ),
+                      PlgMargins.v10,
+                      Row(
+                        children: [
+                          Text(
+                            '${product.price}원',
+                            style: PlgStyles.subtitle1Black_ff282828_16,
+                          ),
+                          PlgMargins.h5,
+                          Text(
+                            '${product.discount}%',
+                            style: PlgStyles.subtitle2Primary_ff1b9dd9_14,
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+            Positioned(
+              top: -18,
+              right: -15,
+              child: IconButton(
+                icon: const Icon(Icons.close_rounded),
+                onPressed: () {},
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

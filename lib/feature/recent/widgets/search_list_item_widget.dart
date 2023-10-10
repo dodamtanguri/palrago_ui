@@ -27,7 +27,7 @@ class SearchListItemWidget extends HookWidget {
         borderRadius: BorderRadius.circular(10), // Rounded corner
       ),
       margin: const EdgeInsets.symmetric(
-          horizontal: PlgSizes.wh20, vertical: PlgSizes.wh10),
+         vertical: PlgSizes.wh10),
       child: Padding(
         padding: const EdgeInsets.symmetric(
             horizontal: PlgSizes.wh20, vertical: PlgSizes.wh20),

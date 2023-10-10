@@ -129,7 +129,6 @@ class OptionOrderCountWidget extends HookWidget {
                 backgroundColor: PlgColor.primary_ff1b9dd9,
                 onButtonClicked: () {},
                 buttonTitle: '결제하기',
-                horizontalMargin: 138,
               ),
             ),
           ),

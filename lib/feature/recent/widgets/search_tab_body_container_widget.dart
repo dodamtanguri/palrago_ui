@@ -14,20 +14,22 @@ class SearchTabBodyContainerWidget extends HookWidget {
   Widget build(BuildContext context) {
     Widget child;
     switch (category) {
-      
+      //최근검색어
       case StoreTabCategory.recentlyKeyword:
-        child =  SearchTabBodyRecentlyKeywordWidget(tag : category);
-        break;
+        child = SearchTabBodyRecentlyKeywordWidget(tag: category);
+      //인기검색어
       case StoreTabCategory.popular:
         child = const SearchTabBodyPopularWidget();
-        break;
+      //최근 본 상품
       case StoreTabCategory.recentlyProduct:
-        child = const SearchTabBodyRecentlyProductWidget();
-        break;
+        child = SearchTabBodyRecentlyProductWidget(
+          products: const [],
+          tag: category,
+        );
+      //찾은 회원
       case StoreTabCategory.foundMember:
         child = const SearchTabBodyFoundMemberWidget();
-        break;
     }
-    return Container(child: child);
+    return SizedBox(child: child);
   }
 }

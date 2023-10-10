@@ -110,13 +110,13 @@ class MarketView extends HookWidget {
             children: [
               SizedBox(
                   height: PlgSizes.wh36, child: MarketTabBarWidget((p0) {})),
-              PlgMargins.h10,
+              PlgMargins.v10,
               const MarketSortWidget(),
               // SizedBox(
               //   height: 112,
               //   child: MarketListItemWidget(marketProduct, () {}),
               // )
-              Expanded(child: MarketListWidget(items, () {}))
+              //MarketListWidget(items, () {})
             ],
           ),
         ),

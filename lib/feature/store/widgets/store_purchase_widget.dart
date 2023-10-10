@@ -38,7 +38,6 @@ class StorePurchaseDetailWidget extends HookWidget {
           StoreButtonWidget(
             backgroundColor: PlgColor.primary_261b9dd9,
             onButtonClicked: () {},
-            horizontalMargin: PlgSizes.m18,
             buttonTitle: '선물하기',
             textStyle: PlgStyles.subtitle1Primary_ff1b9dd9_16,
           ),
@@ -49,7 +48,6 @@ class StorePurchaseDetailWidget extends HookWidget {
               backgroundColor: PlgColor.primary_ff1b9dd9,
               onButtonClicked: onPurchaseClicked,
               buttonTitle: '구매하기',
-              horizontalMargin: PlgSizes.m80,
             ),
           ),
         ],

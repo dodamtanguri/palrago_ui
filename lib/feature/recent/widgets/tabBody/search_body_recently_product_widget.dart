@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:palrago_ui/feature/recent/enums/tab_category.dart';
+import 'package:palrago_ui/feature/recent/widgets/search_list_item_widget.dart';
+import 'package:palrago_ui/feature/recent/widgets/search_list_widget.dart';
 import 'package:palrago_ui/ui/styles/colors.dart';
 
 class SearchTabBodyRecentlyProductWidget extends HookWidget {
-  const SearchTabBodyRecentlyProductWidget({super.key});
+  const SearchTabBodyRecentlyProductWidget({required this.products, super.key,required this.tag});
+  final List<ProductVo> products;
+   final StoreTabCategory tag;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      color: PlgColor.fill_surface85_d9f8f8f8,
+    return ListView(
+       children: [
+        SearchListWidget(products, (tabId, productId) { }, (tabId, productId) { })
+       ],
     );
   }
 }

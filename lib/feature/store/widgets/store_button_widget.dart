@@ -9,11 +9,11 @@ class StoreButtonWidget extends HookWidget {
       {required this.textStyle,
       required this.backgroundColor,
       required this.onButtonClicked,
-      required this.horizontalMargin,
+ 
       required this.buttonTitle,
       super.key});
   final String buttonTitle;
-  final double horizontalMargin;
+
   final Color backgroundColor;
   final TextStyle textStyle;
   final OnButtonClicked onButtonClicked;

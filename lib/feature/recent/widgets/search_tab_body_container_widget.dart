@@ -10,29 +10,26 @@ import '../models/product_item.dart';
 
 final List<ProductVo> dummyProducts = [
   const ProductVo(
-    imageUrl: 'assets/images/img.png',
-    brand: 'Brand1',
-    title: '스타벅스 아이스 카페 아메리카노 Tall 1+1 (강남역점 테이크아웃 전용)',
-    price: 1000,
-    discount: 10,
-    id: 1
-  ),
+      imageUrl: 'assets/images/img.png',
+      brand: 'Brand1',
+      title: '스타벅스 아이스 카페 아메리카노 Tall 1+1 (강남역점 테이크아웃 전용)',
+      price: 1000,
+      discount: 10,
+      id: 1),
   const ProductVo(
-    imageUrl: 'assets/images/img.png',
-    brand: 'Brand2',
-    title: 'Product 2',
-    price: 2000,
-    discount: 15,
-    id: 2
-  ),
+      imageUrl: 'assets/images/img.png',
+      brand: 'Brand2',
+      title: 'Product 2',
+      price: 2000,
+      discount: 15,
+      id: 2),
   const ProductVo(
-    imageUrl: 'assets/images/img.png',
-    brand: 'Brand3',
-    title: 'Product 3',
-    price: 1500,
-    discount: 20,
-    id: 3
-  ),
+      imageUrl: 'assets/images/img.png',
+      brand: 'Brand3',
+      title: 'Product 3',
+      price: 1500,
+      discount: 20,
+      id: 3),
   const ProductVo(
     imageUrl: 'assets/images/img.png',
     brand: 'Brand4',
@@ -42,13 +39,12 @@ final List<ProductVo> dummyProducts = [
     id: 4,
   ),
   const ProductVo(
-    imageUrl: 'assets/images/img.png',
-    brand: 'Brand5',
-    title: 'Product 5',
-    price: 3000,
-    discount: 30,
-    id: 5
-  ),
+      imageUrl: 'assets/images/img.png',
+      brand: 'Brand5',
+      title: 'Product 5',
+      price: 3000,
+      discount: 30,
+      id: 5),
 ];
 
 class SearchTabBodyContainerWidget extends HookWidget {
@@ -57,24 +53,21 @@ class SearchTabBodyContainerWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget child;
-    switch (category) {
+    return SizedBox(
+        child: switch (category) {
       //최근검색어
-      case StoreTabCategory.recentlyKeyword:
-        child = SearchTabBodyRecentlyKeywordWidget(tag: category);
+      StoreTabCategory.recentlyKeyword =>
+        SearchTabBodyRecentlyKeywordWidget(tag: category),
       //인기검색어
-      case StoreTabCategory.popular:
-        child = const SearchTabBodyPopularWidget();
+      StoreTabCategory.popular => const SearchTabBodyPopularWidget(),
       //최근 본 상품
-      case StoreTabCategory.recentlyProduct:
-        child = SearchTabBodyRecentlyProductWidget(
+      StoreTabCategory.recentlyProduct => SearchTabBodyRecentlyProductWidget(
           products: dummyProducts,
           tag: category,
-        );
+        ),
       //찾은 회원
-      case StoreTabCategory.foundMember:
-        child = const SearchTabBodyFoundMemberWidget();
-    }
-    return SizedBox(child: child);
+      StoreTabCategory.foundMember => const SearchTabBodyFoundMemberWidget(),
+      _ => SearchTabBodyFoundMemberWidget(),
+    });
   }
 }

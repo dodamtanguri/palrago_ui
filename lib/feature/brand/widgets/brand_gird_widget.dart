@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:palrago_ui/feature/brand/models/brand_item.dart';
 import 'package:palrago_ui/feature/brand/widgets/brand_gird_item_widget.dart';
-import 'package:palrago_ui/ui/styles/margins.dart';
 
 class BrandGridWidget extends StatelessWidget {
   final List<BrandItem> brands;

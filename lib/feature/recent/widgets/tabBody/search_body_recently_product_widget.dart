@@ -19,12 +19,9 @@ class SearchTabBodyRecentlyProductWidget extends HookWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          // Map through the products and create a list of widgets
           ...products.map(
             (product) => SearchListItemWidget(
               product,
-              (int tabId, int productId) {},
-              (int tabId, int productId) {},
             ),
           ),
           PlgMargins.v20,

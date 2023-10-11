@@ -47,6 +47,45 @@ final List<BrandItem> dummyBrands = [
     title: 'Brand 4',
     id: 'b4',
   ),
+  BrandItem(
+    imageUrl: 'assets/images/brand_logo.png',
+    title: 'Brand 4',
+    id: 'b4',
+  ),
+  BrandItem(
+    imageUrl: 'assets/images/brand_logo.png',
+    title: 'Brand 4',
+    id: 'b4',
+  ),
+    BrandItem(
+    imageUrl: 'assets/images/brand_logo.png',
+    title: 'Brand 4',
+    id: 'b4',
+  ),
+  BrandItem(
+    imageUrl: 'assets/images/brand_logo.png',
+    title: 'Brand 4',
+    id: 'b4',
+  ),
+  BrandItem(
+    imageUrl: 'assets/images/brand_logo.png',
+    title: 'Brand 4',
+    id: 'b4',
+  ),
+
+  BrandItem(
+    imageUrl: 'assets/images/brand_logo.png',
+    title: 'Brand 4',
+    id: 'b4',
+  ),BrandItem(
+    imageUrl: 'assets/images/brand_logo.png',
+    title: 'Brand 4',
+    id: 'b4',
+  ),BrandItem(
+    imageUrl: 'assets/images/brand_logo.png',
+    title: 'Brand 4',
+    id: 'b4',
+  ),
 ];
 
 class BrandSearchView extends HookWidget {
@@ -66,12 +105,16 @@ class BrandSearchView extends HookWidget {
                 const BrandSearchBar(),
                 PlgMargins.v20,
                 BrandGridWidget(brands: dummyBrands),
-                PlgMargins.v20,
-                const BrandRegistWidget(),
+                
+                
               ],
             ),
           ),
         ),
+      ),
+      bottomNavigationBar: const Padding(
+        padding: EdgeInsets.all(PlgSizes.m24),
+        child: BrandRegistWidget(),
       ),
     );
   }

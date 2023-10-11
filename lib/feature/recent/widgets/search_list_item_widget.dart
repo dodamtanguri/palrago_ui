@@ -11,23 +11,26 @@ typedef OnProductRemoveClicked = OnProductEventCallback;
 typedef OnProductSelectClicked = OnProductEventCallback;
 
 class SearchListItemWidget extends HookWidget {
-  const SearchListItemWidget(
-      this.product, this.onProductRemoveClicked, this.onProductSelectClicked,
-      {super.key});
-  final OnProductRemoveClicked onProductRemoveClicked;
-  final OnProductSelectClicked onProductSelectClicked;
+  const SearchListItemWidget(this.product, {super.key});
   final ProductVo product;
 
   @override
   Widget build(BuildContext context) {
+    void onProductRemoveClicked() {
+      print(product);
+    }
+
+    void onProductSelectClicked() {
+      print(product);
+    }
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.white, // Light grey background
 
         borderRadius: BorderRadius.circular(10), // Rounded corner
       ),
-      margin: const EdgeInsets.symmetric(
-         vertical: PlgSizes.wh10),
+      margin: const EdgeInsets.symmetric(vertical: PlgSizes.wh10),
       child: Padding(
         padding: const EdgeInsets.symmetric(
             horizontal: PlgSizes.wh20, vertical: PlgSizes.wh20),
@@ -80,7 +83,7 @@ class SearchListItemWidget extends HookWidget {
               right: -15,
               child: IconButton(
                 icon: const Icon(Icons.close_rounded),
-                onPressed: () {},
+                onPressed: onProductRemoveClicked,
               ),
             ),
           ],

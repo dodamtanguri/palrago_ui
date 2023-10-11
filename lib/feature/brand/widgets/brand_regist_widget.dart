@@ -30,7 +30,7 @@ class BrandRegistWidget extends StatelessWidget {
         ),
         PlgMargins.h8,
         SizedBox(
-          width: 270,
+          width: 260,
           child: StoreButtonWidget(
             textStyle: PlgStyles.subtitle1White_ffffffff_16,
             backgroundColor: PlgColor.primary_ff1b9dd9,

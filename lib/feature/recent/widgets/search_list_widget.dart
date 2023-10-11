@@ -4,7 +4,6 @@ import 'package:palrago_ui/feature/recent/widgets/search_list_item_widget.dart';
 
 import '../models/product_item.dart';
 
-
 class SearchListWidget extends HookWidget {
   const SearchListWidget(
       this.products, this.onProductRemoveClicked, this.onProductSelectClicked,
@@ -18,9 +17,8 @@ class SearchListWidget extends HookWidget {
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: 
-          products.map(
-            (product) => SearchListItemWidget(product, () {} as OnProductRemoveClicked,() {} as OnProductSelectClicked)).toList(),
+        children:
+            products.map((product) => SearchListItemWidget(product)).toList(),
       ),
     );
   }

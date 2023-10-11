@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:palrago_ui/feature/recent/enums/tab_category.dart';
-import 'package:palrago_ui/ui/styles/colors.dart';
 
 class SearchTabBodyRecentlyKeywordWidget extends HookWidget {
   const SearchTabBodyRecentlyKeywordWidget({super.key, required this.tag});

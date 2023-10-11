@@ -15,6 +15,7 @@ final List<ProductVo> dummyProducts = [
     title: '스타벅스 아이스 카페 아메리카노 Tall 1+1 (강남역점 테이크아웃 전용)',
     price: 1000,
     discount: 10,
+    id: 1
   ),
   const ProductVo(
     imageUrl: 'assets/images/img.png',
@@ -22,6 +23,7 @@ final List<ProductVo> dummyProducts = [
     title: 'Product 2',
     price: 2000,
     discount: 15,
+    id: 2
   ),
   const ProductVo(
     imageUrl: 'assets/images/img.png',
@@ -29,6 +31,7 @@ final List<ProductVo> dummyProducts = [
     title: 'Product 3',
     price: 1500,
     discount: 20,
+    id: 3
   ),
   const ProductVo(
     imageUrl: 'assets/images/img.png',
@@ -36,6 +39,7 @@ final List<ProductVo> dummyProducts = [
     title: 'Product 4',
     price: 2500,
     discount: 25,
+    id: 4,
   ),
   const ProductVo(
     imageUrl: 'assets/images/img.png',
@@ -43,6 +47,7 @@ final List<ProductVo> dummyProducts = [
     title: 'Product 5',
     price: 3000,
     discount: 30,
+    id: 5
   ),
 ];
 

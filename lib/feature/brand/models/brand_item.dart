@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+
+@immutable
 class BrandItem {
   final String imageUrl;
   final String title;

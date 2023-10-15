@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:palrago_ui/feature/brand/brand_view.dart';
+import 'package:palrago_ui/feature/home_main_HM1001/home_view.dart';
 import 'package:palrago_ui/feature/imageSlider/image_slider_view.dart';
 import 'package:palrago_ui/feature/market/market_view.dart';
 import 'package:palrago_ui/feature/recent/recent_search_view.dart';
@@ -56,6 +57,12 @@ class Home extends StatelessWidget {
                 pushPage(context, const BrandSearchView());
               },
               child: const Text('브랜드 선택 페이지'),
+            ),
+             ElevatedButton(
+              onPressed: () {
+                pushPage(context, const HomeView());
+              },
+              child: const Text('HM-1001'),
             ),
           ],
         ),

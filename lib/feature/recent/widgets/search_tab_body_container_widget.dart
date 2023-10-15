@@ -67,7 +67,7 @@ class SearchTabBodyContainerWidget extends HookWidget {
         ),
       //찾은 회원
       StoreTabCategory.foundMember => const SearchTabBodyFoundMemberWidget(),
-      _ => SearchTabBodyFoundMemberWidget(),
+      _ => const SearchTabBodyFoundMemberWidget(),
     });
   }
 }
